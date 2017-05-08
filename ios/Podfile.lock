@@ -1,0 +1,22 @@
+PODS:
+  - Flutter (1.0.0)
+  - url_launcher (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `/Users/jbarr/sample-projects/flutter/bin/cache/artifacts/engine/ios`)
+  - url_launcher (from `/Users/jbarr/.pub-cache/hosted/pub.dartlang.org/url_launcher-0.3.3/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: /Users/jbarr/sample-projects/flutter/bin/cache/artifacts/engine/ios
+  url_launcher:
+    :path: /Users/jbarr/.pub-cache/hosted/pub.dartlang.org/url_launcher-0.3.3/ios
+
+SPEC CHECKSUMS:
+  Flutter: d674e78c937094a75ac71dd77e921e840bea3dbf
+  url_launcher: d169a3b4d175c777695e5e970c4265a6c4bd6175
+
+PODFILE CHECKSUM: cc70c01bca487bebd110b87397f017f3b76a89f1
+
+COCOAPODS: 1.2.1
