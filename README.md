@@ -1,8 +1,4 @@
 # flews
+A Hacker news client written in Flutter
 
-A new flutter project.
-
-## Getting Started
-
-For help getting started with Flutter, view our online
-[documentation](http://flutter.io/).
+<img src="images/flews-android.png" width="320"> <img src="images/flews-ios.png" width="320">
