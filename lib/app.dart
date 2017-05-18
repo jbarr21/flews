@@ -1,5 +1,6 @@
 import 'package:flews/github/repos.dart';
 import 'package:flews/hackernews/stories.dart';
+import 'package:flews/reddit/posts.dart';
 import 'package:flutter/material.dart';
 
 class _Page {
@@ -65,17 +66,15 @@ class FlewsAppState extends State<FlewsApp>
             body: new TabBarView(
                 controller: _controller,
                 children: _allPages.map((_Page page) {
-                  if (page.color == Colors.black) {
+                  if (page.color == Colors.blue) {
+                    return new PostsPage(title: '$page.text $title');
+                  } else if (page.color == Colors.black) {
                     return new ReposPage(title: '$page.text $title');
                   } else {
                     return new StoriesPage(title: '${page.text} $title');
                   }
                 }).toList()
             )
-        ),
-        routes: <String, WidgetBuilder>{
-          StoriesPage.routeName: (BuildContext context) =>
-              new StoriesPage(title: title),
-        });
+        ));
   }
 }

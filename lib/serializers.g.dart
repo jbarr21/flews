@@ -8,6 +8,7 @@ part of serializers;
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
+      ..add(Post.serializer)
       ..add(Repo.serializer)
       ..add(Story.serializer)
       ..addBuilderFactory(
