@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:flews/model/serializers.dart';
-import 'package:flews/model/story.dart';
+import 'package:flews/serializers.dart';
+import 'package:flews/hackernews/story.dart';
 import 'package:flutter/services.dart';
 
 const mockMode = false;

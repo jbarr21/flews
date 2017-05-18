@@ -8,6 +8,7 @@ part of serializers;
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
+      ..add(Repo.serializer)
       ..add(Story.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(int)]),

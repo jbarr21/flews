@@ -3,7 +3,8 @@ library serializers;
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/serializer.dart';
 import 'package:built_value/standard_json_plugin.dart';
-import 'package:flews/model/story.dart';
+import 'package:flews/github/repo.dart';
+import 'package:flews/hackernews/story.dart';
 
 part 'serializers.g.dart';
 

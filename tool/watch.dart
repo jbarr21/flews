@@ -18,6 +18,9 @@ Future main(List<String> args) async {
   watch(
       new PhaseGroup.singleAction(
           new GeneratorBuilder([new BuiltValueGenerator()]),
-          new InputSet('flews', const ['lib/model/*.dart'])),
+          new InputSet('flews', const [
+            'lib/*.dart',
+            'lib/github/*.dart',
+            'lib/hackernews/*.dart'])),
       deleteFilesByDefault: true);
 }
