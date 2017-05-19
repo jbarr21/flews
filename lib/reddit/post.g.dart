@@ -7,7 +7,132 @@ part of post;
 // Target: library post
 // **************************************************************************
 
+Serializer<Posts> _$postsSerializer = new _$PostsSerializer();
+Serializer<PostsData> _$postsDataSerializer = new _$PostsDataSerializer();
+Serializer<PostData> _$postDataSerializer = new _$PostDataSerializer();
 Serializer<Post> _$postSerializer = new _$PostSerializer();
+
+class _$PostsSerializer implements StructuredSerializer<Posts> {
+  @override
+  final Iterable<Type> types = const [Posts, _$Posts];
+  @override
+  final String wireName = 'Posts';
+
+  @override
+  Iterable serialize(Serializers serializers, Posts object,
+      {FullType specifiedType: FullType.unspecified}) {
+    final result = <Object>[
+      'data',
+      serializers.serialize(object.data,
+          specifiedType: const FullType(PostsData)),
+    ];
+
+    return result;
+  }
+
+  @override
+  Posts deserialize(Serializers serializers, Iterable serialized,
+      {FullType specifiedType: FullType.unspecified}) {
+    final result = new PostsBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final dynamic value = iterator.current;
+      switch (key) {
+        case 'data':
+          result.data.replace(serializers.deserialize(value,
+              specifiedType: const FullType(PostsData)) as PostsData);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$PostsDataSerializer implements StructuredSerializer<PostsData> {
+  @override
+  final Iterable<Type> types = const [PostsData, _$PostsData];
+  @override
+  final String wireName = 'PostsData';
+
+  @override
+  Iterable serialize(Serializers serializers, PostsData object,
+      {FullType specifiedType: FullType.unspecified}) {
+    final result = <Object>[
+      'children',
+      serializers.serialize(object.children,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(PostData)])),
+    ];
+
+    return result;
+  }
+
+  @override
+  PostsData deserialize(Serializers serializers, Iterable serialized,
+      {FullType specifiedType: FullType.unspecified}) {
+    final result = new PostsDataBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final dynamic value = iterator.current;
+      switch (key) {
+        case 'children':
+          result.children.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(PostData)]))
+              as BuiltList<PostData>);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$PostDataSerializer implements StructuredSerializer<PostData> {
+  @override
+  final Iterable<Type> types = const [PostData, _$PostData];
+  @override
+  final String wireName = 'PostData';
+
+  @override
+  Iterable serialize(Serializers serializers, PostData object,
+      {FullType specifiedType: FullType.unspecified}) {
+    final result = <Object>[
+      'data',
+      serializers.serialize(object.data, specifiedType: const FullType(Post)),
+    ];
+
+    return result;
+  }
+
+  @override
+  PostData deserialize(Serializers serializers, Iterable serialized,
+      {FullType specifiedType: FullType.unspecified}) {
+    final result = new PostDataBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final dynamic value = iterator.current;
+      switch (key) {
+        case 'data':
+          result.data.replace(serializers.deserialize(value,
+              specifiedType: const FullType(Post)) as Post);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
 
 class _$PostSerializer implements StructuredSerializer<Post> {
   @override
@@ -78,6 +203,240 @@ class _$PostSerializer implements StructuredSerializer<Post> {
     }
 
     return result.build();
+  }
+}
+
+// **************************************************************************
+// Generator: BuiltValueGenerator
+// Target: abstract class Posts
+// **************************************************************************
+
+class _$Posts extends Posts {
+  @override
+  final PostsData data;
+
+  factory _$Posts([void updates(PostsBuilder b)]) =>
+      (new PostsBuilder()..update(updates)).build();
+
+  _$Posts._({this.data}) : super._() {
+    if (data == null) throw new ArgumentError.notNull('data');
+  }
+
+  @override
+  Posts rebuild(void updates(PostsBuilder b)) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  PostsBuilder toBuilder() => new PostsBuilder()..replace(this);
+
+  @override
+  bool operator ==(dynamic other) {
+    if (identical(other, this)) return true;
+    if (other is! Posts) return false;
+    return data == other.data;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc(0, data.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper('Posts')..add('data', data)).toString();
+  }
+}
+
+class PostsBuilder implements Builder<Posts, PostsBuilder> {
+  _$Posts _$v;
+
+  PostsDataBuilder _data;
+  PostsDataBuilder get data => _$this._data ??= new PostsDataBuilder();
+  set data(PostsDataBuilder data) => _$this._data = data;
+
+  PostsBuilder();
+
+  PostsBuilder get _$this {
+    if (_$v != null) {
+      _data = _$v.data?.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(Posts other) {
+    if (other == null) throw new ArgumentError.notNull('other');
+    _$v = other as _$Posts;
+  }
+
+  @override
+  void update(void updates(PostsBuilder b)) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  _$Posts build() {
+    final result = _$v ?? new _$Posts._(data: data?.build());
+    replace(result);
+    return result;
+  }
+}
+
+// **************************************************************************
+// Generator: BuiltValueGenerator
+// Target: abstract class PostsData
+// **************************************************************************
+
+class _$PostsData extends PostsData {
+  @override
+  final BuiltList<PostData> children;
+
+  factory _$PostsData([void updates(PostsDataBuilder b)]) =>
+      (new PostsDataBuilder()..update(updates)).build();
+
+  _$PostsData._({this.children}) : super._() {
+    if (children == null) throw new ArgumentError.notNull('children');
+  }
+
+  @override
+  PostsData rebuild(void updates(PostsDataBuilder b)) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  PostsDataBuilder toBuilder() => new PostsDataBuilder()..replace(this);
+
+  @override
+  bool operator ==(dynamic other) {
+    if (identical(other, this)) return true;
+    if (other is! PostsData) return false;
+    return children == other.children;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc(0, children.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper('PostsData')..add('children', children))
+        .toString();
+  }
+}
+
+class PostsDataBuilder implements Builder<PostsData, PostsDataBuilder> {
+  _$PostsData _$v;
+
+  ListBuilder<PostData> _children;
+  ListBuilder<PostData> get children =>
+      _$this._children ??= new ListBuilder<PostData>();
+  set children(ListBuilder<PostData> children) => _$this._children = children;
+
+  PostsDataBuilder();
+
+  PostsDataBuilder get _$this {
+    if (_$v != null) {
+      _children = _$v.children?.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(PostsData other) {
+    if (other == null) throw new ArgumentError.notNull('other');
+    _$v = other as _$PostsData;
+  }
+
+  @override
+  void update(void updates(PostsDataBuilder b)) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  _$PostsData build() {
+    final result = _$v ?? new _$PostsData._(children: children?.build());
+    replace(result);
+    return result;
+  }
+}
+
+// **************************************************************************
+// Generator: BuiltValueGenerator
+// Target: abstract class PostData
+// **************************************************************************
+
+class _$PostData extends PostData {
+  @override
+  final Post data;
+
+  factory _$PostData([void updates(PostDataBuilder b)]) =>
+      (new PostDataBuilder()..update(updates)).build();
+
+  _$PostData._({this.data}) : super._() {
+    if (data == null) throw new ArgumentError.notNull('data');
+  }
+
+  @override
+  PostData rebuild(void updates(PostDataBuilder b)) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  PostDataBuilder toBuilder() => new PostDataBuilder()..replace(this);
+
+  @override
+  bool operator ==(dynamic other) {
+    if (identical(other, this)) return true;
+    if (other is! PostData) return false;
+    return data == other.data;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc(0, data.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper('PostData')..add('data', data))
+        .toString();
+  }
+}
+
+class PostDataBuilder implements Builder<PostData, PostDataBuilder> {
+  _$PostData _$v;
+
+  PostBuilder _data;
+  PostBuilder get data => _$this._data ??= new PostBuilder();
+  set data(PostBuilder data) => _$this._data = data;
+
+  PostDataBuilder();
+
+  PostDataBuilder get _$this {
+    if (_$v != null) {
+      _data = _$v.data?.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(PostData other) {
+    if (other == null) throw new ArgumentError.notNull('other');
+    _$v = other as _$PostData;
+  }
+
+  @override
+  void update(void updates(PostDataBuilder b)) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  _$PostData build() {
+    final result = _$v ?? new _$PostData._(data: data?.build());
+    replace(result);
+    return result;
   }
 }
 

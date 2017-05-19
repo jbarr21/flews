@@ -6,6 +6,30 @@ import 'package:built_value/serializer.dart';
 
 part 'post.g.dart';
 
+abstract class Posts implements Built<Posts, PostsBuilder> {
+  PostsData get data;
+
+  Posts._();
+  factory Posts([updates(PostsBuilder b)]) = _$Posts;
+  static Serializer<Posts> get serializer => _$postsSerializer;
+}
+
+abstract class PostsData implements Built<PostsData, PostsDataBuilder> {
+  BuiltList<PostData> get children;
+
+  PostsData._();
+  factory PostsData([updates(PostsDataBuilder b)]) = _$PostsData;
+  static Serializer<PostsData> get serializer => _$postsDataSerializer;
+}
+
+abstract class PostData implements Built<PostData, PostDataBuilder> {
+  Post get data;
+
+  PostData._();
+  factory PostData([updates(PostDataBuilder b)]) = _$PostData;
+  static Serializer<PostData> get serializer => _$postDataSerializer;
+}
+
 abstract class Post implements Built<Post, PostBuilder> {
   String get id;
   String get author;

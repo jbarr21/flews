@@ -7,7 +7,51 @@ part of repo;
 // Target: library repo
 // **************************************************************************
 
+Serializer<Repos> _$reposSerializer = new _$ReposSerializer();
 Serializer<Repo> _$repoSerializer = new _$RepoSerializer();
+
+class _$ReposSerializer implements StructuredSerializer<Repos> {
+  @override
+  final Iterable<Type> types = const [Repos, _$Repos];
+  @override
+  final String wireName = 'Repos';
+
+  @override
+  Iterable serialize(Serializers serializers, Repos object,
+      {FullType specifiedType: FullType.unspecified}) {
+    final result = <Object>[
+      'items',
+      serializers.serialize(object.items,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(Repo)])),
+    ];
+
+    return result;
+  }
+
+  @override
+  Repos deserialize(Serializers serializers, Iterable serialized,
+      {FullType specifiedType: FullType.unspecified}) {
+    final result = new ReposBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final dynamic value = iterator.current;
+      switch (key) {
+        case 'items':
+          result.items.replace(serializers.deserialize(value,
+                  specifiedType:
+                      const FullType(BuiltList, const [const FullType(Repo)]))
+              as BuiltList<Repo>);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
 
 class _$RepoSerializer implements StructuredSerializer<Repo> {
   @override
@@ -76,6 +120,84 @@ class _$RepoSerializer implements StructuredSerializer<Repo> {
     }
 
     return result.build();
+  }
+}
+
+// **************************************************************************
+// Generator: BuiltValueGenerator
+// Target: abstract class Repos
+// **************************************************************************
+
+class _$Repos extends Repos {
+  @override
+  final BuiltList<Repo> items;
+
+  factory _$Repos([void updates(ReposBuilder b)]) =>
+      (new ReposBuilder()..update(updates)).build();
+
+  _$Repos._({this.items}) : super._() {
+    if (items == null) throw new ArgumentError.notNull('items');
+  }
+
+  @override
+  Repos rebuild(void updates(ReposBuilder b)) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  ReposBuilder toBuilder() => new ReposBuilder()..replace(this);
+
+  @override
+  bool operator ==(dynamic other) {
+    if (identical(other, this)) return true;
+    if (other is! Repos) return false;
+    return items == other.items;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc(0, items.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper('Repos')..add('items', items))
+        .toString();
+  }
+}
+
+class ReposBuilder implements Builder<Repos, ReposBuilder> {
+  _$Repos _$v;
+
+  ListBuilder<Repo> _items;
+  ListBuilder<Repo> get items => _$this._items ??= new ListBuilder<Repo>();
+  set items(ListBuilder<Repo> items) => _$this._items = items;
+
+  ReposBuilder();
+
+  ReposBuilder get _$this {
+    if (_$v != null) {
+      _items = _$v.items?.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(Repos other) {
+    if (other == null) throw new ArgumentError.notNull('other');
+    _$v = other as _$Repos;
+  }
+
+  @override
+  void update(void updates(ReposBuilder b)) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  _$Repos build() {
+    final result = _$v ?? new _$Repos._(items: items?.build());
+    replace(result);
+    return result;
   }
 }
 

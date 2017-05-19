@@ -1,34 +1,22 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:built_collection/built_collection.dart';
 import 'package:flews/reddit/post.dart';
 import 'package:flews/serializers.dart';
+import 'package:flews/util.dart';
 import 'package:flutter/services.dart';
 
-const mockMode = false;
-
 const String baseUrl = 'https://www.reddit.com/r/AndroidDev/';
-const String mockBaseUrl = 'https://localhost:8888/';
-
 const String topPostsUrl = 'top.json?count=25';
-
-const jsonCodec = const JsonCodec();
 
 Future<List<Post>> getTopPosts() async {
   final httpClient = createHttpClient();
-  final response = await httpClient.get(_url(topPostsUrl));
+  final response = await httpClient.get(Url.baseUrl(baseUrl, topPostsUrl));
 
-  Map resp = jsonCodec.decode(response.body);
-  List topPosts = resp['data']['children'];
+  Posts posts = serializers.deserializeWith(
+      Posts.serializer, JSON.decode(response.body));
 
-  final futures = topPosts.take(25).map((postJson) => getPost(postJson));
-
-  return Future.wait(futures);
-}
-
-Future<Post> getPost(postJson) async {
-  return serializers.deserializeWith(Post.serializer, postJson['data']);
-}
-
-_url(String url) {
-  return '${(mockMode ? '$mockBaseUrl' : '$baseUrl')}$url';
+  return posts.data.children
+      .map((PostData postData) => postData.data)
+      .toList();
 }

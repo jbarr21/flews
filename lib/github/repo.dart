@@ -6,6 +6,14 @@ import 'package:built_value/serializer.dart';
 
 part 'repo.g.dart';
 
+abstract class Repos implements Built<Repos, ReposBuilder> {
+  BuiltList<Repo> get items;
+
+  Repos._();
+  factory Repos([updates(ReposBuilder b)]) = _$Repos;
+  static Serializer<Repos> get serializer => _$reposSerializer;
+}
+
 abstract class Repo implements Built<Repo, RepoBuilder> {
   int get id;
   String get full_name;
