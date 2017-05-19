@@ -6,11 +6,9 @@ import 'package:flews/util.dart';
 import 'package:flutter/material.dart';
 
 class ReposPage extends StatefulWidget {
-  ReposPage({Key key, this.title}) : super(key: key);
+  ReposPage({Key key}) : super(key: key);
 
   static const String routeName = "/repos";
-
-  final String title;
 
   @override
   _ReposPageState createState() => new _ReposPageState();

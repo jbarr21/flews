@@ -6,11 +6,9 @@ import 'package:flews/util.dart';
 import 'package:flutter/material.dart';
 
 class StoriesPage extends StatefulWidget {
-  StoriesPage({Key key, this.title}) : super(key: key);
+  StoriesPage({Key key}) : super(key: key);
 
   static const String routeName = "/stories";
-
-  final String title;
 
   @override
   _StoriesPageState createState() => new _StoriesPageState();

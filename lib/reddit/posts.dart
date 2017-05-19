@@ -6,11 +6,9 @@ import 'package:flews/util.dart';
 import 'package:flutter/material.dart';
 
 class PostsPage extends StatefulWidget {
-  PostsPage({Key key, this.title}) : super(key: key);
+  PostsPage({Key key}) : super(key: key);
 
   static const String routeName = "/posts";
-
-  final String title;
 
   @override
   _PostsPageState createState() => new _PostsPageState();

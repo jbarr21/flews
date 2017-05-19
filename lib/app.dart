@@ -14,8 +14,8 @@ class _Page {
 final List<_Page> _allPages = <_Page>[
   new _Page(icon: Icons.list, text: 'Hacker News', color: Colors.orange),
   new _Page(icon: Icons.rss_feed, text: 'Reddit', color: Colors.blue),
-  new _Page(icon: Icons.image, text: 'Imgur', color: Colors.green),
-  new _Page(icon: Icons.code, text: 'GitHub', color: Colors.black)
+  new _Page(icon: Icons.image, text: 'Imgur', color: Colors.lightGreen),
+  new _Page(icon: Icons.code, text: 'GitHub', color: Colors.grey)
 ];
 
 class FlewsApp extends StatefulWidget {
@@ -25,14 +25,22 @@ class FlewsApp extends StatefulWidget {
 
 class FlewsAppState extends State<FlewsApp>
     with SingleTickerProviderStateMixin {
-  static const String title = 'Flews';
 
   TabController _controller;
+  _Page _currentTab;
 
   @override
   void initState() {
     super.initState();
     _controller = new TabController(vsync: this, length: _allPages.length);
+    _controller.addListener(() {
+      if (!_controller.indexIsChanging) {
+        setState(() {
+          _currentTab = _allPages[_controller.index];
+        });
+      }
+    });
+    _currentTab = _allPages[_controller.index];
   }
 
   @override
@@ -44,16 +52,16 @@ class FlewsAppState extends State<FlewsApp>
   @override
   Widget build(BuildContext context) {
     ThemeData themeData = new ThemeData(
-        primarySwatch: Colors.orange,
-        primaryColor: Colors.orange,
+        primarySwatch: _currentTab.color,
+        primaryColor: _currentTab.color,
         brightness: Brightness.dark);
 
     return new MaterialApp(
-        title: title,
+        title: _currentTab.text,
         theme: themeData,
         home: new Scaffold(
             appBar: new AppBar(
-              title: new Text(title),
+              title: new Text(_currentTab.text),
               bottom: new TabBar(
                 controller: _controller,
                 isScrollable: false,
@@ -67,11 +75,11 @@ class FlewsAppState extends State<FlewsApp>
                 controller: _controller,
                 children: _allPages.map((_Page page) {
                   if (page.color == Colors.blue) {
-                    return new PostsPage(title: '$page.text $title');
-                  } else if (page.color == Colors.black) {
-                    return new ReposPage(title: '$page.text $title');
+                    return new PostsPage();
+                  } else if (page.color == Colors.grey) {
+                    return new ReposPage();
                   } else {
-                    return new StoriesPage(title: '${page.text} $title');
+                    return new StoriesPage();
                   }
                 }).toList()
             )
