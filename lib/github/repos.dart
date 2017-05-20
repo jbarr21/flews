@@ -34,7 +34,11 @@ class _ReposPageState extends State<ReposPage> {
     }).toList();
 
     return new RefreshIndicator(
-        child: new ListView(children: repoListTiles),
+        child: new AnimatedCrossFade(
+            firstChild: new Center(child: new CircularProgressIndicator()),
+            secondChild: new ListView(children: repoListTiles),
+            crossFadeState: _repos.isEmpty ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+            duration: new Duration(milliseconds: 200)),
         onRefresh: _onRefresh
     );
   }
