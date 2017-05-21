@@ -8,6 +8,8 @@ part of serializers;
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
+      ..add(GalleryItems.serializer)
+      ..add(ImageItem.serializer)
       ..add(Post.serializer)
       ..add(PostData.serializer)
       ..add(Posts.serializer)
@@ -15,6 +17,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Repo.serializer)
       ..add(Repos.serializer)
       ..add(Story.serializer)
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(ImageItem)]),
+          () => new ListBuilder<ImageItem>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(PostData)]),
           () => new ListBuilder<PostData>())

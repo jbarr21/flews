@@ -20,6 +20,7 @@ Future main(List<String> args) async {
           new GeneratorBuilder([new BuiltValueGenerator()]),
           new InputSet('flews', const [
             'lib/*.dart',
+            'lib/imgur/*.dart',
             'lib/github/*.dart',
             'lib/hackernews/*.dart',
             'lib/reddit/*.dart'])),

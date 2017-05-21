@@ -57,16 +57,14 @@ class StoryListTile extends StatelessWidget {
   StoryListTile(this.story, this.tapCallback);
 
   @override
-  Widget build(BuildContext context) {
-    return new ListTile(
+  Widget build(BuildContext context) => new ListTile(
       title: new Text(story.title, maxLines: 2, overflow: TextOverflow.ellipsis),
       subtitle: new Text(story.domainName()),
       trailing: new Column(
         children: [
           new Padding(
               padding: const EdgeInsets.only(bottom: 4.0),
-              // TODO: get color from theme
-              child: new Icon(Icons.comment, color: Colors.orange)
+              child: new Icon(Icons.comment, color: Theme.of(context).accentColor)
           ),
           new Text(story.commentCount().toString()),
         ],
@@ -74,5 +72,4 @@ class StoryListTile extends StatelessWidget {
       ),
       onTap: tapCallback
     );
-  }
 }

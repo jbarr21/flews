@@ -1,46 +1,30 @@
 import 'package:flews/github/repos.dart';
 import 'package:flews/hackernews/stories.dart';
+import 'package:flews/imgur/images.dart';
 import 'package:flews/reddit/posts.dart';
+import 'package:flews/services.dart';
 import 'package:flutter/material.dart';
-
-class _Page {
-  _Page({ this.icon, this.text, this.color });
-
-  final IconData icon;
-  final String text;
-  final Color color;
-}
-
-final List<_Page> _allPages = <_Page>[
-  new _Page(icon: Icons.list, text: 'Hacker News', color: Colors.orange),
-  new _Page(icon: Icons.rss_feed, text: 'Reddit', color: Colors.blue),
-  new _Page(icon: Icons.image, text: 'Imgur', color: Colors.lightGreen),
-  new _Page(icon: Icons.code, text: 'GitHub', color: Colors.grey)
-];
 
 class FlewsApp extends StatefulWidget {
   @override
   FlewsAppState createState() => new FlewsAppState();
 }
 
-class FlewsAppState extends State<FlewsApp>
-    with SingleTickerProviderStateMixin {
+class FlewsAppState extends State<FlewsApp> with SingleTickerProviderStateMixin {
 
   TabController _controller;
-  _Page _currentTab;
+  Page _currentTab;
 
   @override
   void initState() {
     super.initState();
-    _controller = new TabController(vsync: this, length: _allPages.length);
+    _controller = new TabController(vsync: this, length: PAGES.length);
     _controller.addListener(() {
-      if (!_controller.indexIsChanging) {
-        setState(() {
-          _currentTab = _allPages[_controller.index];
-        });
-      }
+      setState(() {
+        _currentTab = PAGES[_controller.index];
+      });
     });
-    _currentTab = _allPages[_controller.index];
+    _currentTab = PAGES[_controller.index];
   }
 
   @override
@@ -54,6 +38,7 @@ class FlewsAppState extends State<FlewsApp>
     ThemeData themeData = new ThemeData(
         primarySwatch: _currentTab.color,
         primaryColor: _currentTab.color,
+        accentColor: _currentTab.color,
         brightness: Brightness.dark);
 
     return new MaterialApp(
@@ -66,20 +51,20 @@ class FlewsAppState extends State<FlewsApp>
                 controller: _controller,
                 isScrollable: false,
                 indicatorColor: themeData.textTheme.title.color,
-                tabs: _allPages.map((_Page page) {
-                  return new Tab(icon: new Icon(page.icon));
+                tabs: PAGES.map((Page page) {
+                  return new Tab(icon: new ImageIcon(new AssetImage(
+                      'images/icons/${page.icon}')));
                 }).toList(),
               ),
             ),
             body: new TabBarView(
                 controller: _controller,
-                children: _allPages.map((_Page page) {
-                  if (page.color == Colors.blue) {
-                    return new PostsPage();
-                  } else if (page.color == Colors.grey) {
-                    return new ReposPage();
-                  } else {
-                    return new StoriesPage();
+                children: PAGES.map((Page page) {
+                  switch (page.service) {
+                    case Service.HACKER_NEWS: return new StoriesPage(); break;
+                    case Service.REDDIT: return new PostsPage(); break;
+                    case Service.IMGUR: return new ImagesPage(); break;
+                    case Service.GITHUB: return new ReposPage(); break;
                   }
                 }).toList()
             )
