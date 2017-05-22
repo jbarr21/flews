@@ -11,7 +11,7 @@ abstract class Story implements Built<Story, StoryBuilder> {
   static RegExp domainSuffix = new RegExp(r'([/?].*)');
 
   int get id;
-  @nullable String get user;
+  String get by;
   String get title;
   @nullable String get url;
   String get type;

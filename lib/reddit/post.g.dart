@@ -154,6 +154,15 @@ class _$PostSerializer implements StructuredSerializer<Post> {
       'title',
       serializers.serialize(object.title,
           specifiedType: const FullType(String)),
+      'domain',
+      serializers.serialize(object.domain,
+          specifiedType: const FullType(String)),
+      'subreddit',
+      serializers.serialize(object.subreddit,
+          specifiedType: const FullType(String)),
+      'created_utc',
+      serializers.serialize(object.created_utc,
+          specifiedType: const FullType(double)),
       'num_comments',
       serializers.serialize(object.num_comments,
           specifiedType: const FullType(int)),
@@ -190,6 +199,18 @@ class _$PostSerializer implements StructuredSerializer<Post> {
         case 'title':
           result.title = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
+          break;
+        case 'domain':
+          result.domain = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'subreddit':
+          result.subreddit = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'created_utc':
+          result.created_utc = serializers.deserialize(value,
+              specifiedType: const FullType(double)) as double;
           break;
         case 'num_comments':
           result.num_comments = serializers.deserialize(value,
@@ -455,6 +476,12 @@ class _$Post extends Post {
   @override
   final String title;
   @override
+  final String domain;
+  @override
+  final String subreddit;
+  @override
+  final double created_utc;
+  @override
   final int num_comments;
   @override
   final int ups;
@@ -463,12 +490,23 @@ class _$Post extends Post {
       (new PostBuilder()..update(updates)).build();
 
   _$Post._(
-      {this.id, this.author, this.url, this.title, this.num_comments, this.ups})
+      {this.id,
+      this.author,
+      this.url,
+      this.title,
+      this.domain,
+      this.subreddit,
+      this.created_utc,
+      this.num_comments,
+      this.ups})
       : super._() {
     if (id == null) throw new ArgumentError.notNull('id');
     if (author == null) throw new ArgumentError.notNull('author');
     if (url == null) throw new ArgumentError.notNull('url');
     if (title == null) throw new ArgumentError.notNull('title');
+    if (domain == null) throw new ArgumentError.notNull('domain');
+    if (subreddit == null) throw new ArgumentError.notNull('subreddit');
+    if (created_utc == null) throw new ArgumentError.notNull('created_utc');
     if (num_comments == null) throw new ArgumentError.notNull('num_comments');
     if (ups == null) throw new ArgumentError.notNull('ups');
   }
@@ -488,6 +526,9 @@ class _$Post extends Post {
         author == other.author &&
         url == other.url &&
         title == other.title &&
+        domain == other.domain &&
+        subreddit == other.subreddit &&
+        created_utc == other.created_utc &&
         num_comments == other.num_comments &&
         ups == other.ups;
   }
@@ -496,8 +537,16 @@ class _$Post extends Post {
   int get hashCode {
     return $jf($jc(
         $jc(
-            $jc($jc($jc($jc(0, id.hashCode), author.hashCode), url.hashCode),
-                title.hashCode),
+            $jc(
+                $jc(
+                    $jc(
+                        $jc(
+                            $jc($jc($jc(0, id.hashCode), author.hashCode),
+                                url.hashCode),
+                            title.hashCode),
+                        domain.hashCode),
+                    subreddit.hashCode),
+                created_utc.hashCode),
             num_comments.hashCode),
         ups.hashCode));
   }
@@ -509,6 +558,9 @@ class _$Post extends Post {
           ..add('author', author)
           ..add('url', url)
           ..add('title', title)
+          ..add('domain', domain)
+          ..add('subreddit', subreddit)
+          ..add('created_utc', created_utc)
           ..add('num_comments', num_comments)
           ..add('ups', ups))
         .toString();
@@ -534,6 +586,18 @@ class PostBuilder implements Builder<Post, PostBuilder> {
   String get title => _$this._title;
   set title(String title) => _$this._title = title;
 
+  String _domain;
+  String get domain => _$this._domain;
+  set domain(String domain) => _$this._domain = domain;
+
+  String _subreddit;
+  String get subreddit => _$this._subreddit;
+  set subreddit(String subreddit) => _$this._subreddit = subreddit;
+
+  double _created_utc;
+  double get created_utc => _$this._created_utc;
+  set created_utc(double created_utc) => _$this._created_utc = created_utc;
+
   int _num_comments;
   int get num_comments => _$this._num_comments;
   set num_comments(int num_comments) => _$this._num_comments = num_comments;
@@ -550,6 +614,9 @@ class PostBuilder implements Builder<Post, PostBuilder> {
       _author = _$v.author;
       _url = _$v.url;
       _title = _$v.title;
+      _domain = _$v.domain;
+      _subreddit = _$v.subreddit;
+      _created_utc = _$v.created_utc;
       _num_comments = _$v.num_comments;
       _ups = _$v.ups;
       _$v = null;
@@ -576,6 +643,9 @@ class PostBuilder implements Builder<Post, PostBuilder> {
             author: author,
             url: url,
             title: title,
+            domain: domain,
+            subreddit: subreddit,
+            created_utc: created_utc,
             num_comments: num_comments,
             ups: ups);
     replace(result);

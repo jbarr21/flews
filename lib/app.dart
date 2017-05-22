@@ -1,7 +1,7 @@
-import 'package:flews/github/repos.dart';
-import 'package:flews/hackernews/stories.dart';
-import 'package:flews/imgur/images.dart';
-import 'package:flews/reddit/posts.dart';
+import 'package:flews/github/repos_page.dart';
+import 'package:flews/hackernews/stories_page.dart';
+import 'package:flews/imgur/images_page.dart';
+import 'package:flews/reddit/posts_page.dart';
 import 'package:flews/services.dart';
 import 'package:flutter/material.dart';
 

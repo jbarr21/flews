@@ -1,7 +1,7 @@
 import 'dart:async';
-import 'dart:math';
 import 'package:flews/reddit/api.dart';
 import 'package:flews/reddit/post.dart';
+import 'package:flews/reddit/posts_tile.dart';
 import 'package:flews/util.dart';
 import 'package:flutter/material.dart';
 
@@ -45,34 +45,5 @@ class _PostsPageState extends State<PostsPage> {
 
   Future<List<Post>> _onRefresh() {
     return getTopPosts();
-  }
-}
-
-class PostListTile extends StatelessWidget {
-  final Post post;
-  final GestureTapCallback tapCallback;
-
-  final Random random = new Random();
-
-  PostListTile(this.post, this.tapCallback);
-
-  @override
-  Widget build(BuildContext context) {
-    return new ListTile(
-      title: new Text(post.title, maxLines: 2, overflow: TextOverflow.ellipsis),
-      subtitle: new Text(post.username()),
-      trailing: new Column(
-        children: [
-          new Padding(
-              padding: const EdgeInsets.only(bottom: 4.0),
-              // TODO: get color from theme
-              child: new Icon(Icons.arrow_upward, color: Colors.blue)
-          ),
-          new Text(post.commentCount().toString()),
-        ],
-        mainAxisAlignment: MainAxisAlignment.center,
-      ),
-      onTap: tapCallback
-    );
   }
 }

@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'dart:math';
 import 'package:flews/hackernews/api.dart';
+import 'package:flews/hackernews/stories_tile.dart';
 import 'package:flews/hackernews/story.dart';
 import 'package:flews/util.dart';
 import 'package:flutter/material.dart';
@@ -46,30 +46,4 @@ class _StoriesPageState extends State<StoriesPage> {
   Future<List<Story>> _onRefresh() {
     return getTopStories();
   }
-}
-
-class StoryListTile extends StatelessWidget {
-  final Story story;
-  final GestureTapCallback tapCallback;
-
-  final Random random = new Random();
-
-  StoryListTile(this.story, this.tapCallback);
-
-  @override
-  Widget build(BuildContext context) => new ListTile(
-      title: new Text(story.title, maxLines: 2, overflow: TextOverflow.ellipsis),
-      subtitle: new Text(story.domainName()),
-      trailing: new Column(
-        children: [
-          new Padding(
-              padding: const EdgeInsets.only(bottom: 4.0),
-              child: new Icon(Icons.comment, color: Theme.of(context).accentColor)
-          ),
-          new Text(story.commentCount().toString()),
-        ],
-        mainAxisAlignment: MainAxisAlignment.center,
-      ),
-      onTap: tapCallback
-    );
 }

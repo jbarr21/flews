@@ -35,6 +35,9 @@ abstract class Post implements Built<Post, PostBuilder> {
   String get author;
   String get url;
   String get title;
+  String get domain;
+  String get subreddit;
+  double get created_utc;
   int get num_comments;
   int get ups;
 

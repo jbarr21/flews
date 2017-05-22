@@ -13,7 +13,7 @@ Future<List<Repo>> getTopRepos() async {
   final httpClient = createHttpClient();
   String url = Uri.encodeFull(
       '${Url.baseUrl(baseUrl, topReposUrl)}?'
-          'sort=stars&order=desc&q=language:java '
+          'sort=stars&order=desc&q=language:java language:kotlin '
           'created:>${Dates.lastWeek()}');
 
   final response = await httpClient.get(url);

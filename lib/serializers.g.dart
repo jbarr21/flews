@@ -15,6 +15,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Posts.serializer)
       ..add(PostsData.serializer)
       ..add(Repo.serializer)
+      ..add(RepoOwner.serializer)
       ..add(Repos.serializer)
       ..add(Story.serializer)
       ..addBuilderFactory(

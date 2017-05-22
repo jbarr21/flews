@@ -4,12 +4,13 @@ description: A new flutter project.
 dependencies:
   flutter:
     sdk: flutter
+  share: ^0.2.1
+  shared_preferences: ^0.2.0+1
   url_launcher: ^0.4.2+1
   meta: ^1.0.4
   built_value: ^1.0.1
   built_collection: ^1.0.0
-  http: '>=0.11.3+12'
-  isolate: '>=1.0.0'
+  rxdart: ^0.10.2
 
 dev_dependencies:
   build: ^0.7.0

@@ -21,6 +21,8 @@ class _$StorySerializer implements StructuredSerializer<Story> {
     final result = <Object>[
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(int)),
+      'by',
+      serializers.serialize(object.by, specifiedType: const FullType(String)),
       'title',
       serializers.serialize(object.title,
           specifiedType: const FullType(String)),
@@ -31,12 +33,6 @@ class _$StorySerializer implements StructuredSerializer<Story> {
       'score',
       serializers.serialize(object.score, specifiedType: const FullType(int)),
     ];
-    if (object.user != null) {
-      result
-        ..add('user')
-        ..add(serializers.serialize(object.user,
-            specifiedType: const FullType(String)));
-    }
     if (object.url != null) {
       result
         ..add('url')
@@ -75,8 +71,8 @@ class _$StorySerializer implements StructuredSerializer<Story> {
           result.id = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
-        case 'user':
-          result.user = serializers.deserialize(value,
+        case 'by':
+          result.by = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'title':
@@ -125,7 +121,7 @@ class _$Story extends Story {
   @override
   final int id;
   @override
-  final String user;
+  final String by;
   @override
   final String title;
   @override
@@ -146,7 +142,7 @@ class _$Story extends Story {
 
   _$Story._(
       {this.id,
-      this.user,
+      this.by,
       this.title,
       this.url,
       this.type,
@@ -156,6 +152,7 @@ class _$Story extends Story {
       this.kids})
       : super._() {
     if (id == null) throw new ArgumentError.notNull('id');
+    if (by == null) throw new ArgumentError.notNull('by');
     if (title == null) throw new ArgumentError.notNull('title');
     if (type == null) throw new ArgumentError.notNull('type');
     if (time == null) throw new ArgumentError.notNull('time');
@@ -174,7 +171,7 @@ class _$Story extends Story {
     if (identical(other, this)) return true;
     if (other is! Story) return false;
     return id == other.id &&
-        user == other.user &&
+        by == other.by &&
         title == other.title &&
         url == other.url &&
         type == other.type &&
@@ -192,7 +189,7 @@ class _$Story extends Story {
                 $jc(
                     $jc(
                         $jc(
-                            $jc($jc($jc(0, id.hashCode), user.hashCode),
+                            $jc($jc($jc(0, id.hashCode), by.hashCode),
                                 title.hashCode),
                             url.hashCode),
                         type.hashCode),
@@ -206,7 +203,7 @@ class _$Story extends Story {
   String toString() {
     return (newBuiltValueToStringHelper('Story')
           ..add('id', id)
-          ..add('user', user)
+          ..add('by', by)
           ..add('title', title)
           ..add('url', url)
           ..add('type', type)
@@ -225,9 +222,9 @@ class StoryBuilder implements Builder<Story, StoryBuilder> {
   int get id => _$this._id;
   set id(int id) => _$this._id = id;
 
-  String _user;
-  String get user => _$this._user;
-  set user(String user) => _$this._user = user;
+  String _by;
+  String get by => _$this._by;
+  set by(String by) => _$this._by = by;
 
   String _title;
   String get title => _$this._title;
@@ -262,7 +259,7 @@ class StoryBuilder implements Builder<Story, StoryBuilder> {
   StoryBuilder get _$this {
     if (_$v != null) {
       _id = _$v.id;
-      _user = _$v.user;
+      _by = _$v.by;
       _title = _$v.title;
       _url = _$v.url;
       _type = _$v.type;
@@ -291,7 +288,7 @@ class StoryBuilder implements Builder<Story, StoryBuilder> {
     final result = _$v ??
         new _$Story._(
             id: id,
-            user: user,
+            by: by,
             title: title,
             url: url,
             type: type,
