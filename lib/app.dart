@@ -10,8 +10,8 @@ class FlewsApp extends StatefulWidget {
   FlewsAppState createState() => new FlewsAppState();
 }
 
-class FlewsAppState extends State<FlewsApp> with SingleTickerProviderStateMixin {
-
+class FlewsAppState extends State<FlewsApp>
+    with SingleTickerProviderStateMixin {
   TabController _controller;
   Page _currentTab;
 
@@ -52,8 +52,9 @@ class FlewsAppState extends State<FlewsApp> with SingleTickerProviderStateMixin 
                 isScrollable: false,
                 indicatorColor: themeData.textTheme.title.color,
                 tabs: PAGES.map((Page page) {
-                  return new Tab(icon: new ImageIcon(new AssetImage(
-                      'images/icons/${page.icon}')));
+                  return new Tab(
+                      icon: new ImageIcon(
+                          new AssetImage('images/icons/${page.icon}')));
                 }).toList(),
               ),
             ),
@@ -61,13 +62,19 @@ class FlewsAppState extends State<FlewsApp> with SingleTickerProviderStateMixin 
                 controller: _controller,
                 children: PAGES.map((Page page) {
                   switch (page.service) {
-                    case Service.HACKER_NEWS: return new StoriesPage(); break;
-                    case Service.REDDIT: return new PostsPage(); break;
-                    case Service.IMGUR: return new ImagesPage(); break;
-                    case Service.GITHUB: return new ReposPage(); break;
+                    case Service.HACKER_NEWS:
+                      return new StoriesPage();
+                      break;
+                    case Service.REDDIT:
+                      return new PostsPage();
+                      break;
+                    case Service.IMGUR:
+                      return new ImagesPage();
+                      break;
+                    case Service.GITHUB:
+                      return new ReposPage();
+                      break;
                   }
-                }).toList()
-            )
-        ));
+                }).toList())));
   }
 }

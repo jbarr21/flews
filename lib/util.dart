@@ -19,7 +19,6 @@ class Url {
 class Dates {
   static lastWeek({String format = 'yyyy-MM-dd'}) {
     return new DateFormat(format)
-        .format(new DateTime.now()
-            .add(new Duration(days: -7)));
+        .format(new DateTime.now().add(new Duration(days: -7)));
   }
 }

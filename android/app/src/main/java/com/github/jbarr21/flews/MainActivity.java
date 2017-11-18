@@ -1,4 +1,4 @@
-package com.yourcompany.flews;
+package com.github.jbarr21.flews;
 
 import android.os.Bundle;
 

@@ -10,6 +10,5 @@ import 'package:flews/reddit/post.dart';
 
 part 'serializers.g.dart';
 
-Serializers serializers = (
-    _$serializers.toBuilder()..addPlugin(new StandardJsonPlugin())
-).build();
+Serializers serializers =
+    (_$serializers.toBuilder()..addPlugin(new StandardJsonPlugin())).build();

@@ -13,8 +13,7 @@ const String clientId = 'cc86a8de0e7c459';
 
 Future<List<ImageItem>> getMostViral() async {
   final httpClient = createHttpClient();
-  final response = await httpClient.get(
-      Url.baseUrl(baseUrl, mostViralUrl),
+  final response = await httpClient.get(Url.baseUrl(baseUrl, mostViralUrl),
       headers: {'authorization': 'Client-ID $clientId'});
 
   GalleryItems photos = serializers.deserializeWith(

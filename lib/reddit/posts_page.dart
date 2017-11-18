@@ -35,12 +35,13 @@ class _PostsPageState extends State<PostsPage> {
 
     return new RefreshIndicator(
         child: new AnimatedCrossFade(
-          firstChild: new Center(child: new CircularProgressIndicator()),
-          secondChild: new ListView(children: postListTiles),
-          crossFadeState: _posts.isEmpty ? CrossFadeState.showFirst : CrossFadeState.showSecond,
-          duration: new Duration(milliseconds: 200)),
-        onRefresh: _onRefresh
-    );
+            firstChild: new Center(child: new CircularProgressIndicator()),
+            secondChild: new ListView(children: postListTiles),
+            crossFadeState: _posts.isEmpty
+                ? CrossFadeState.showFirst
+                : CrossFadeState.showSecond,
+            duration: new Duration(milliseconds: 200)),
+        onRefresh: _onRefresh);
   }
 
   Future<List<Post>> _onRefresh() {

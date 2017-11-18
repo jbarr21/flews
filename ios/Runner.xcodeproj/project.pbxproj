@@ -437,7 +437,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.flews;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.jbarr21.flews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -459,7 +459,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.flews;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.jbarr21.flews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

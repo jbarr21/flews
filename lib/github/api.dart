@@ -11,15 +11,14 @@ const String topReposUrl = 'repositories';
 
 Future<List<Repo>> getTopRepos() async {
   final httpClient = createHttpClient();
-  String url = Uri.encodeFull(
-      '${Url.baseUrl(baseUrl, topReposUrl)}?'
-          'sort=stars&order=desc&q=language:java language:kotlin '
-          'created:>${Dates.lastWeek()}');
+  String url = Uri.encodeFull('${Url.baseUrl(baseUrl, topReposUrl)}?'
+      'sort=stars&order=desc&q=language:java language:kotlin language:dart '
+      'created:>${Dates.lastWeek()}');
 
   final response = await httpClient.get(url);
 
-  Repos repos = serializers.deserializeWith(
-      Repos.serializer, JSON.decode(response.body));
+  Repos repos =
+      serializers.deserializeWith(Repos.serializer, JSON.decode(response.body));
 
   return repos.items.toList(growable: false);
 }

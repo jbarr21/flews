@@ -22,16 +22,13 @@ class _ImagesDetailPageState extends State<ImagesDetailPage> {
         title: new Text(widget.image.id),
       ),
       body: new Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          new Expanded(
-            child:
-            new Image.network(
-              'http://i.imgur.com/7unwhF0.jpg',
-              fit: BoxFit.fitWidth))
-        ]
-      ),
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            new Expanded(
+                child: new Image.network('http://i.imgur.com/7unwhF0.jpg',
+                    fit: BoxFit.fitWidth))
+          ]),
       floatingActionButton: new FloatingActionButton(
         onPressed: _onFloatingActionButtonPressed,
         tooltip: 'Add',
@@ -40,6 +37,5 @@ class _ImagesDetailPageState extends State<ImagesDetailPage> {
     );
   }
 
-  void _onFloatingActionButtonPressed() {
-  }
+  void _onFloatingActionButtonPressed() {}
 }

@@ -13,19 +13,23 @@ abstract class Story implements Built<Story, StoryBuilder> {
   int get id;
   String get by;
   String get title;
-  @nullable String get url;
+  @nullable
+  String get url;
   String get type;
-  @nullable bool get deleted;
+  @nullable
+  bool get deleted;
   int get time;
   int get score;
-  @nullable BuiltList<int> get kids;
+  @nullable
+  BuiltList<int> get kids;
 
   Story._();
   factory Story([updates(StoryBuilder b)]) = _$Story;
   static Serializer<Story> get serializer => _$storySerializer;
 
   domainName() {
-    return url?.replaceAll(domainPrefix, '')?.replaceAll(domainSuffix, '') ?? '';
+    return url?.replaceAll(domainPrefix, '')?.replaceAll(domainSuffix, '') ??
+        '';
   }
 
   commentCount() {

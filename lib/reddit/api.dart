@@ -13,10 +13,8 @@ Future<List<Post>> getTopPosts() async {
   final httpClient = createHttpClient();
   final response = await httpClient.get(Url.baseUrl(baseUrl, topPostsUrl));
 
-  Posts posts = serializers.deserializeWith(
-      Posts.serializer, JSON.decode(response.body));
+  Posts posts =
+      serializers.deserializeWith(Posts.serializer, JSON.decode(response.body));
 
-  return posts.data.children
-      .map((PostData postData) => postData.data)
-      .toList();
+  return posts.data.children.map((PostData postData) => postData.data).toList();
 }

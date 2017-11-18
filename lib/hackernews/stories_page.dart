@@ -37,10 +37,11 @@ class _StoriesPageState extends State<StoriesPage> {
         child: new AnimatedCrossFade(
             firstChild: new Center(child: new CircularProgressIndicator()),
             secondChild: new ListView(children: storyListTiles),
-            crossFadeState: _stories.isEmpty ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+            crossFadeState: _stories.isEmpty
+                ? CrossFadeState.showFirst
+                : CrossFadeState.showSecond,
             duration: new Duration(milliseconds: 200)),
-        onRefresh: _onRefresh
-    );
+        onRefresh: _onRefresh);
   }
 
   Future<List<Story>> _onRefresh() {

@@ -34,8 +34,7 @@ class _ImagesPageState extends State<ImagesPage> {
       return new ImageGridTile(
           photo,
           //() => Navigator.of(context).pushNamed(ImagesDetailPage.routeName)
-          () => UrlLauncher.launchUrl(photo.link)
-      );
+          () => UrlLauncher.launchUrl(photo.link));
     }).toList();
 
     final Orientation orientation = MediaQuery.of(context).orientation;
@@ -51,11 +50,13 @@ class _ImagesPageState extends State<ImagesPage> {
     return new RefreshIndicator(
         child: new AnimatedCrossFade(
             firstChild: new Center(child: new CircularProgressIndicator()),
-            secondChild: new Column(children: <Widget>[new Expanded(child: gridView)]),
-            crossFadeState: _images.isEmpty ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+            secondChild:
+                new Column(children: <Widget>[new Expanded(child: gridView)]),
+            crossFadeState: _images.isEmpty
+                ? CrossFadeState.showFirst
+                : CrossFadeState.showSecond,
             duration: new Duration(milliseconds: 200)),
-        onRefresh: _onRefresh
-    );
+        onRefresh: _onRefresh);
   }
 
   Future<List<ImageItem>> _onRefresh() {

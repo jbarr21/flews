@@ -22,7 +22,8 @@ abstract class Repo implements Built<Repo, RepoBuilder> {
   String get html_url;
   String get language;
   String get created_at;
-  @nullable String get description;
+  @nullable
+  String get description;
   int get stargazers_count;
 
   Repo._();

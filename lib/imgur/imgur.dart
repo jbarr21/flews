@@ -6,7 +6,8 @@ import 'package:built_value/serializer.dart';
 
 part 'imgur.g.dart';
 
-abstract class GalleryItems implements Built<GalleryItems, GalleryItemsBuilder> {
+abstract class GalleryItems
+    implements Built<GalleryItems, GalleryItemsBuilder> {
   BuiltList<ImageItem> get data;
 
   GalleryItems._();
@@ -17,7 +18,8 @@ abstract class GalleryItems implements Built<GalleryItems, GalleryItemsBuilder> 
 abstract class ImageItem implements Built<ImageItem, ImageItemBuilder> {
   String get id;
   String get link;
-  @nullable String get cover;
+  @nullable
+  String get cover;
 
   ImageItem._();
   factory ImageItem([updates(ImageItemBuilder b)]) = _$ImageItem;
