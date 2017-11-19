@@ -1,30 +1,32 @@
 import 'dart:async';
-import 'package:flews/hackernews/api.dart';
+
+import 'package:flews/hackernews/stories_repository.dart';
 import 'package:flews/hackernews/stories_tile.dart';
 import 'package:flews/hackernews/story.dart';
 import 'package:flews/util.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 
 class StoriesPage extends StatefulWidget {
-  StoriesPage({Key key}) : super(key: key);
-
   static const String routeName = "/stories";
 
+  StoriesPage({Key key}) : super(key: key);
+
   @override
-  _StoriesPageState createState() => new _StoriesPageState();
+  _StoriesPageState createState() =>
+      new _StoriesPageState(new StoriesRepositoryImpl(new Client()));
 }
 
 class _StoriesPageState extends State<StoriesPage> {
+  StoriesRepository _repository;
   List<Story> _stories = [];
+
+  _StoriesPageState(this._repository);
 
   @override
   void initState() {
     super.initState();
-    getTopStories().then((stories) {
-      setState(() {
-        _stories = stories;
-      });
-    });
+    loadStories();
   }
 
   @override
@@ -44,7 +46,16 @@ class _StoriesPageState extends State<StoriesPage> {
         onRefresh: _onRefresh);
   }
 
-  Future<List<Story>> _onRefresh() {
-    return getTopStories();
+  Future _onRefresh() {
+    return new Future(loadStories);
+  }
+
+  void loadStories() {
+    _repository.getTopStories()
+        .listen((List<Story> stories) {
+          setState(() {
+            _stories = stories;
+          });
+        });
   }
 }

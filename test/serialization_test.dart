@@ -2,7 +2,7 @@ library serialization_test;
 
 import 'dart:convert';
 import 'package:built_collection/built_collection.dart';
-import 'package:flews/hackernews/api.dart';
+import 'package:flews/hackernews/stories_repository.dart';
 import 'package:flews/serializers.dart';
 import 'package:test/test.dart';
 
