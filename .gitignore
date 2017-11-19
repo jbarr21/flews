@@ -14,6 +14,7 @@ Thumbs.db
 /app/version.properties
 
 # See https://www.dartlang.org/tools/private-files.html
+.flutter
 
 # Files and directories created by pub
 .packages

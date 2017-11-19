@@ -1,0 +1,83 @@
+#!/bin/bash
+
+# Use this flutter wrapper to bundle flutter within your project to make sure everybody builds with the same version
+# put `flutterw` into the root of your flutter project and execute it. It will download all dependencies automatically when calling it.
+# Use `./flutterw upgrade` to upgrade the flutter version, using the channel defined in flutter/wrapper/flutter-wrapper.properties
+
+FLUTTERW_DIR="$(pwd -P)/flutter/wrapper"
+FLUTTER_DIR="$(pwd -P)/.flutter"
+WRAPPER_PROPERTIES="$FLUTTERW_DIR/flutter-wrapper.properties"
+FLUTTER_REPO_URL="https://github.com/flutter/flutter.git"
+
+DEFAULT_CHANNEL="alpha"
+
+# Check if wrapper config file exists otherwise create with default values
+if [ ! -d $FLUTTERW_DIR ]; then
+    mkdir -p $FLUTTERW_DIR
+fi
+
+# Create wrapper properties file if it doesn't exit
+if [ ! -f $WRAPPER_PROPERTIES ]; then
+    # Use alpha here as recommended, will be replaced with explicit sha1 once cloned
+    echo "flutter_channel=$DEFAULT_CHANNEL" > $WRAPPER_PROPERTIES
+fi
+
+# read all properties from config file
+while IFS='=' read -r key value; do
+    key=$(echo $key | tr '.' '_')
+    eval "${key}='${value}'"
+done < "$WRAPPER_PROPERTIES"
+
+
+# Clone Flutter when not already cloned in project dir, the outer git repo will ignore this sub repo
+if [ ! -d $FLUTTER_DIR ]; then
+    echo "Downloading Flutter with wrapper"
+    git clone $FLUTTER_REPO_URL $FLUTTER_DIR
+fi
+
+upgradeWrapperConfigFile () {
+    FLUTTER_SHA1="$(git -C $FLUTTER_DIR rev-parse HEAD)"
+    if [ ! -z "$FLUTTER_SHA1" ]; then
+        # Write config file with updated version
+        echo "flutter_channel=$flutter_channel" > $WRAPPER_PROPERTIES
+        echo "flutter_version=$FLUTTER_SHA1" >> $WRAPPER_PROPERTIES
+    else
+        echo "Error: could not get version from flutter repo"
+        exit 1
+    fi
+}
+
+FLUTTER_SHA1="$(git -C $FLUTTER_DIR rev-parse HEAD)"
+
+# When wrapper file version was changed, update flutter accordingly before executing
+if [ "$flutter_version" != "$FLUTTER_SHA1" ]; then
+    # use version when available, otherwise the channel on initial checkout
+    if [ -z $flutter_version ]; then REV="$flutter_channel"; else REV="$flutter_version"; fi
+
+    echo "Change Flutter version to $REV"
+
+    git -C $FLUTTER_DIR checkout $REV -q
+    upgradeWrapperConfigFile
+
+    # when changing version also update binaries
+    echo "Upgrading engine"
+    $FLUTTER_DIR/bin/flutter precache
+    $FLUTTER_DIR/bin/flutter packages upgrade
+fi
+
+# Flutter wrapper operates with detached HEAD. Upgrade won't work, flutter has to be on a branch to pull
+# Checkout channel before upgrading
+if [[ $@ == *"upgrade"* ]]; then
+    echo "Switch to channel '$flutter_channel' before upgrading"
+    git -C $FLUTTER_DIR checkout $flutter_channel -q
+fi
+
+set -e
+"$FLUTTER_DIR/bin/flutter" "$@"
+
+
+# Automatically update the flutter version in wrapper after upgrade; or at initial run without existing version
+if [[ $@ == *"upgrade"* ]]; then
+    upgradeWrapperConfigFile
+fi
+
