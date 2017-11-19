@@ -1,3 +1,4 @@
+import 'package:flews/ui/resources/strings.dart';
 import 'package:flutter/material.dart';
 
 enum Service { HACKER_NEWS, REDDIT, IMGUR, GITHUB }
@@ -14,22 +15,22 @@ class Page {
 final List<Page> PAGES = <Page>[
   new Page(
       service: Service.HACKER_NEWS,
-      text: 'Hacker News',
+      text: Strings.hackerNews,
       icon: 'ycombinator.png',
       color: Colors.deepOrange),
   new Page(
       service: Service.REDDIT,
-      text: 'Reddit',
+      text: Strings.reddit,
       icon: 'reddit.png',
       color: Colors.blue),
   new Page(
       service: Service.IMGUR,
-      text: 'Imgur',
+      text: Strings.imgur,
       icon: 'imgur.png',
       color: Colors.green),
   new Page(
       service: Service.GITHUB,
-      text: 'GitHub',
+      text: Strings.github,
       icon: 'github.png',
       color: Colors.blueGrey)
 ];
