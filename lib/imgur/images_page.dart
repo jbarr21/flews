@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flews/imgur/api.dart';
-import 'package:flews/imgur/images_detail_page.dart';
 import 'package:flews/imgur/images_tile.dart';
 import 'package:flews/imgur/imgur.dart';
 import 'package:flews/util.dart';

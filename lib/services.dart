@@ -12,6 +12,7 @@ class Page {
   final Color color;
 }
 
+// ignore: non_constant_identifier_names
 final List<Page> PAGES = <Page>[
   new Page(
       service: Service.HACKER_NEWS,

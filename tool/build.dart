@@ -10,12 +10,20 @@ import 'package:source_gen/source_gen.dart';
 
 /// Example of how to use source_gen with [BuiltValueGenerator].
 ///
+///
+///
 /// Import the generators you want and pass them to [build] as shown,
 /// specifying which files in which packages you want to run against.
 Future main(List<String> args) async {
   await build(
       new PhaseGroup.singleAction(
           new GeneratorBuilder([new BuiltValueGenerator()]),
-          new InputSet('flews', const ['lib/model/*.dart'])),
+          new InputSet('flews', const [
+            'lib/*.dart',
+            'lib/serializers.dart',
+            'lib/imgur/*.dart',
+            'lib/github/*.dart',
+            'lib/hackernews/*.dart',
+            'lib/reddit/*.dart'])),
       deleteFilesByDefault: true);
 }

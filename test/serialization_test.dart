@@ -14,13 +14,15 @@ const String gh_top_repos_response = '{"total_count":32715,"incomplete_results'
 void main() {
   test("Hacker News top stories response is decoded", () {
     expect(
-        JSON.decode(hn_top_stories_response),
+        json.decode(hn_top_stories_response),
         equals([14372679, 14370397, 14372267]));
   });
 
   test("Hacker News top stories response is deserialized", () {
     expect(
-        serializers.deserialize(JSON.decode(hn_top_stories_response), specifiedType: listOfInts),
+        serializers.deserialize(
+            json.decode(hn_top_stories_response),
+            specifiedType: listOfInts),
         equals(new BuiltList<int>()..toBuilder().addAll([14372679, 14370397, 14372267])));
   });
 

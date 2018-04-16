@@ -1,6 +1,5 @@
 import 'package:flews/hackernews/story.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:share/share.dart';
 
 class StoryListTile extends StatelessWidget {
@@ -47,10 +46,7 @@ class StoryListTile extends StatelessWidget {
     share('${story.title} ${story.url}');
   }
 
-  _onLongPressTrailing(BuildContext context) {
-    String clipboardText = '${story.url}';
-    Clipboard.setData(new ClipboardData(text: clipboardText));
-    Scaffold.of(context).showSnackBar(new SnackBar(
-        content: new Text('Copied to clipboard:\n$clipboardText')));
-  }
+//  _onLongPressTrailing(BuildContext context) {
+//    ClipboardUtils.copyText(context, story.url);
+//  }
 }

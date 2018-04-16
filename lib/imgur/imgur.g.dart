@@ -4,8 +4,15 @@ part of imgur;
 
 // **************************************************************************
 // Generator: BuiltValueGenerator
-// Target: library imgur
 // **************************************************************************
+
+// ignore_for_file: always_put_control_body_on_new_line
+// ignore_for_file: annotate_overrides
+// ignore_for_file: avoid_annotating_with_dynamic
+// ignore_for_file: avoid_returning_this
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_expression_function_bodies
+// ignore_for_file: sort_constructors_first
 
 Serializer<GalleryItems> _$galleryItemsSerializer =
     new _$GalleryItemsSerializer();
@@ -43,9 +50,8 @@ class _$GalleryItemsSerializer implements StructuredSerializer<GalleryItems> {
       switch (key) {
         case 'data':
           result.data.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(ImageItem)]))
-              as BuiltList<ImageItem>);
+              specifiedType: const FullType(
+                  BuiltList, const [const FullType(ImageItem)])) as BuiltList);
           break;
       }
     }
@@ -109,11 +115,6 @@ class _$ImageItemSerializer implements StructuredSerializer<ImageItem> {
   }
 }
 
-// **************************************************************************
-// Generator: BuiltValueGenerator
-// Target: abstract class GalleryItems
-// **************************************************************************
-
 class _$GalleryItems extends GalleryItems {
   @override
   final BuiltList<ImageItem> data;
@@ -122,7 +123,8 @@ class _$GalleryItems extends GalleryItems {
       (new GalleryItemsBuilder()..update(updates)).build();
 
   _$GalleryItems._({this.data}) : super._() {
-    if (data == null) throw new ArgumentError.notNull('data');
+    if (data == null)
+      throw new BuiltValueNullFieldError('GalleryItems', 'data');
   }
 
   @override
@@ -183,16 +185,24 @@ class GalleryItemsBuilder
 
   @override
   _$GalleryItems build() {
-    final result = _$v ?? new _$GalleryItems._(data: data?.build());
-    replace(result);
-    return result;
+    _$GalleryItems _$result;
+    try {
+      _$result = _$v ?? new _$GalleryItems._(data: data.build());
+    } catch (_) {
+      String _$failedField;
+      try {
+        _$failedField = 'data';
+        data.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'GalleryItems', _$failedField, e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
   }
 }
-
-// **************************************************************************
-// Generator: BuiltValueGenerator
-// Target: abstract class ImageItem
-// **************************************************************************
 
 class _$ImageItem extends ImageItem {
   @override
@@ -206,8 +216,8 @@ class _$ImageItem extends ImageItem {
       (new ImageItemBuilder()..update(updates)).build();
 
   _$ImageItem._({this.id, this.link, this.cover}) : super._() {
-    if (id == null) throw new ArgumentError.notNull('id');
-    if (link == null) throw new ArgumentError.notNull('link');
+    if (id == null) throw new BuiltValueNullFieldError('ImageItem', 'id');
+    if (link == null) throw new BuiltValueNullFieldError('ImageItem', 'link');
   }
 
   @override
@@ -279,8 +289,8 @@ class ImageItemBuilder implements Builder<ImageItem, ImageItemBuilder> {
 
   @override
   _$ImageItem build() {
-    final result = _$v ?? new _$ImageItem._(id: id, link: link, cover: cover);
-    replace(result);
-    return result;
+    final _$result = _$v ?? new _$ImageItem._(id: id, link: link, cover: cover);
+    replace(_$result);
+    return _$result;
   }
 }

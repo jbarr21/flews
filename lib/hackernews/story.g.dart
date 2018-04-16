@@ -4,8 +4,15 @@ part of story;
 
 // **************************************************************************
 // Generator: BuiltValueGenerator
-// Target: library story
 // **************************************************************************
+
+// ignore_for_file: always_put_control_body_on_new_line
+// ignore_for_file: annotate_overrides
+// ignore_for_file: avoid_annotating_with_dynamic
+// ignore_for_file: avoid_returning_this
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_expression_function_bodies
+// ignore_for_file: sort_constructors_first
 
 Serializer<Story> _$storySerializer = new _$StorySerializer();
 
@@ -103,7 +110,7 @@ class _$StorySerializer implements StructuredSerializer<Story> {
           result.kids.replace(serializers.deserialize(value,
                   specifiedType:
                       const FullType(BuiltList, const [const FullType(int)]))
-              as BuiltList<int>);
+              as BuiltList);
           break;
       }
     }
@@ -111,11 +118,6 @@ class _$StorySerializer implements StructuredSerializer<Story> {
     return result.build();
   }
 }
-
-// **************************************************************************
-// Generator: BuiltValueGenerator
-// Target: abstract class Story
-// **************************************************************************
 
 class _$Story extends Story {
   @override
@@ -151,12 +153,12 @@ class _$Story extends Story {
       this.score,
       this.kids})
       : super._() {
-    if (id == null) throw new ArgumentError.notNull('id');
-    if (by == null) throw new ArgumentError.notNull('by');
-    if (title == null) throw new ArgumentError.notNull('title');
-    if (type == null) throw new ArgumentError.notNull('type');
-    if (time == null) throw new ArgumentError.notNull('time');
-    if (score == null) throw new ArgumentError.notNull('score');
+    if (id == null) throw new BuiltValueNullFieldError('Story', 'id');
+    if (by == null) throw new BuiltValueNullFieldError('Story', 'by');
+    if (title == null) throw new BuiltValueNullFieldError('Story', 'title');
+    if (type == null) throw new BuiltValueNullFieldError('Story', 'type');
+    if (time == null) throw new BuiltValueNullFieldError('Story', 'time');
+    if (score == null) throw new BuiltValueNullFieldError('Story', 'score');
   }
 
   @override
@@ -285,18 +287,31 @@ class StoryBuilder implements Builder<Story, StoryBuilder> {
 
   @override
   _$Story build() {
-    final result = _$v ??
-        new _$Story._(
-            id: id,
-            by: by,
-            title: title,
-            url: url,
-            type: type,
-            deleted: deleted,
-            time: time,
-            score: score,
-            kids: _kids?.build());
-    replace(result);
-    return result;
+    _$Story _$result;
+    try {
+      _$result = _$v ??
+          new _$Story._(
+              id: id,
+              by: by,
+              title: title,
+              url: url,
+              type: type,
+              deleted: deleted,
+              time: time,
+              score: score,
+              kids: _kids?.build());
+    } catch (_) {
+      String _$failedField;
+      try {
+        _$failedField = 'kids';
+        _kids?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'Story', _$failedField, e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
   }
 }

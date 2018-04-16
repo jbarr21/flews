@@ -1,6 +1,5 @@
 import 'package:flews/reddit/post.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:share/share.dart';
 
 class PostListTile extends StatelessWidget {
@@ -48,10 +47,7 @@ class PostListTile extends StatelessWidget {
     share('${post.username()} ${post.url}');
   }
 
-  _onLongPressTrailing(BuildContext context) {
-    String clipboardText = '${post.url}';
-    Clipboard.setData(new ClipboardData(text: clipboardText));
-    Scaffold.of(context).showSnackBar(new SnackBar(
-        content: new Text('Copied to clipboard:\n$clipboardText')));
-  }
+//  _onLongPressTrailing(BuildContext context) {
+//    ClipboardUtils.copyText(context, post.url);
+//  }
 }

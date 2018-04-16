@@ -4,8 +4,15 @@ part of post;
 
 // **************************************************************************
 // Generator: BuiltValueGenerator
-// Target: library post
 // **************************************************************************
+
+// ignore_for_file: always_put_control_body_on_new_line
+// ignore_for_file: annotate_overrides
+// ignore_for_file: avoid_annotating_with_dynamic
+// ignore_for_file: avoid_returning_this
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_expression_function_bodies
+// ignore_for_file: sort_constructors_first
 
 Serializer<Posts> _$postsSerializer = new _$PostsSerializer();
 Serializer<PostsData> _$postsDataSerializer = new _$PostsDataSerializer();
@@ -84,9 +91,8 @@ class _$PostsDataSerializer implements StructuredSerializer<PostsData> {
       switch (key) {
         case 'children':
           result.children.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(PostData)]))
-              as BuiltList<PostData>);
+              specifiedType: const FullType(
+                  BuiltList, const [const FullType(PostData)])) as BuiltList);
           break;
       }
     }
@@ -227,11 +233,6 @@ class _$PostSerializer implements StructuredSerializer<Post> {
   }
 }
 
-// **************************************************************************
-// Generator: BuiltValueGenerator
-// Target: abstract class Posts
-// **************************************************************************
-
 class _$Posts extends Posts {
   @override
   final PostsData data;
@@ -240,7 +241,7 @@ class _$Posts extends Posts {
       (new PostsBuilder()..update(updates)).build();
 
   _$Posts._({this.data}) : super._() {
-    if (data == null) throw new ArgumentError.notNull('data');
+    if (data == null) throw new BuiltValueNullFieldError('Posts', 'data');
   }
 
   @override
@@ -298,16 +299,24 @@ class PostsBuilder implements Builder<Posts, PostsBuilder> {
 
   @override
   _$Posts build() {
-    final result = _$v ?? new _$Posts._(data: data?.build());
-    replace(result);
-    return result;
+    _$Posts _$result;
+    try {
+      _$result = _$v ?? new _$Posts._(data: data.build());
+    } catch (_) {
+      String _$failedField;
+      try {
+        _$failedField = 'data';
+        data.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'Posts', _$failedField, e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
   }
 }
-
-// **************************************************************************
-// Generator: BuiltValueGenerator
-// Target: abstract class PostsData
-// **************************************************************************
 
 class _$PostsData extends PostsData {
   @override
@@ -317,7 +326,8 @@ class _$PostsData extends PostsData {
       (new PostsDataBuilder()..update(updates)).build();
 
   _$PostsData._({this.children}) : super._() {
-    if (children == null) throw new ArgumentError.notNull('children');
+    if (children == null)
+      throw new BuiltValueNullFieldError('PostsData', 'children');
   }
 
   @override
@@ -377,16 +387,24 @@ class PostsDataBuilder implements Builder<PostsData, PostsDataBuilder> {
 
   @override
   _$PostsData build() {
-    final result = _$v ?? new _$PostsData._(children: children?.build());
-    replace(result);
-    return result;
+    _$PostsData _$result;
+    try {
+      _$result = _$v ?? new _$PostsData._(children: children.build());
+    } catch (_) {
+      String _$failedField;
+      try {
+        _$failedField = 'children';
+        children.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'PostsData', _$failedField, e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
   }
 }
-
-// **************************************************************************
-// Generator: BuiltValueGenerator
-// Target: abstract class PostData
-// **************************************************************************
 
 class _$PostData extends PostData {
   @override
@@ -396,7 +414,7 @@ class _$PostData extends PostData {
       (new PostDataBuilder()..update(updates)).build();
 
   _$PostData._({this.data}) : super._() {
-    if (data == null) throw new ArgumentError.notNull('data');
+    if (data == null) throw new BuiltValueNullFieldError('PostData', 'data');
   }
 
   @override
@@ -455,16 +473,24 @@ class PostDataBuilder implements Builder<PostData, PostDataBuilder> {
 
   @override
   _$PostData build() {
-    final result = _$v ?? new _$PostData._(data: data?.build());
-    replace(result);
-    return result;
+    _$PostData _$result;
+    try {
+      _$result = _$v ?? new _$PostData._(data: data.build());
+    } catch (_) {
+      String _$failedField;
+      try {
+        _$failedField = 'data';
+        data.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'PostData', _$failedField, e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
   }
 }
-
-// **************************************************************************
-// Generator: BuiltValueGenerator
-// Target: abstract class Post
-// **************************************************************************
 
 class _$Post extends Post {
   @override
@@ -500,15 +526,18 @@ class _$Post extends Post {
       this.num_comments,
       this.ups})
       : super._() {
-    if (id == null) throw new ArgumentError.notNull('id');
-    if (author == null) throw new ArgumentError.notNull('author');
-    if (url == null) throw new ArgumentError.notNull('url');
-    if (title == null) throw new ArgumentError.notNull('title');
-    if (domain == null) throw new ArgumentError.notNull('domain');
-    if (subreddit == null) throw new ArgumentError.notNull('subreddit');
-    if (created_utc == null) throw new ArgumentError.notNull('created_utc');
-    if (num_comments == null) throw new ArgumentError.notNull('num_comments');
-    if (ups == null) throw new ArgumentError.notNull('ups');
+    if (id == null) throw new BuiltValueNullFieldError('Post', 'id');
+    if (author == null) throw new BuiltValueNullFieldError('Post', 'author');
+    if (url == null) throw new BuiltValueNullFieldError('Post', 'url');
+    if (title == null) throw new BuiltValueNullFieldError('Post', 'title');
+    if (domain == null) throw new BuiltValueNullFieldError('Post', 'domain');
+    if (subreddit == null)
+      throw new BuiltValueNullFieldError('Post', 'subreddit');
+    if (created_utc == null)
+      throw new BuiltValueNullFieldError('Post', 'created_utc');
+    if (num_comments == null)
+      throw new BuiltValueNullFieldError('Post', 'num_comments');
+    if (ups == null) throw new BuiltValueNullFieldError('Post', 'ups');
   }
 
   @override
@@ -637,7 +666,7 @@ class PostBuilder implements Builder<Post, PostBuilder> {
 
   @override
   _$Post build() {
-    final result = _$v ??
+    final _$result = _$v ??
         new _$Post._(
             id: id,
             author: author,
@@ -648,7 +677,7 @@ class PostBuilder implements Builder<Post, PostBuilder> {
             created_utc: created_utc,
             num_comments: num_comments,
             ups: ups);
-    replace(result);
-    return result;
+    replace(_$result);
+    return _$result;
   }
 }

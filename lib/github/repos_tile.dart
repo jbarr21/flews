@@ -1,6 +1,5 @@
 import 'package:flews/github/repo.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:share/share.dart';
 
 class RepoListTile extends StatelessWidget {
@@ -47,10 +46,7 @@ class RepoListTile extends StatelessWidget {
     share('${repo.full_name} ${repo.html_url}');
   }
 
-  _onLongPressTrailing(BuildContext context) {
-    String clipboardText = '${repo.html_url}';
-    Clipboard.setData(new ClipboardData(text: clipboardText));
-    Scaffold.of(context).showSnackBar(new SnackBar(
-        content: new Text('Copied to clipboard:\n$clipboardText')));
-  }
+//  _onLongPressTrailing(BuildContext context) {
+//    ClipboardUtils.copyText(context, repo.html_url);
+//  }
 }

@@ -37,8 +37,8 @@ abstract class Post implements Built<Post, PostBuilder> {
   String get title;
   String get domain;
   String get subreddit;
-  double get created_utc;
-  int get num_comments;
+  double get created_utc; // ignore: non_constant_identifier_names
+  int get num_comments; // ignore: non_constant_identifier_names
   int get ups;
 
   Post._();

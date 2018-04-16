@@ -4,8 +4,15 @@ part of repo;
 
 // **************************************************************************
 // Generator: BuiltValueGenerator
-// Target: library repo
 // **************************************************************************
+
+// ignore_for_file: always_put_control_body_on_new_line
+// ignore_for_file: annotate_overrides
+// ignore_for_file: avoid_annotating_with_dynamic
+// ignore_for_file: avoid_returning_this
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_expression_function_bodies
+// ignore_for_file: sort_constructors_first
 
 Serializer<Repos> _$reposSerializer = new _$ReposSerializer();
 Serializer<Repo> _$repoSerializer = new _$RepoSerializer();
@@ -45,7 +52,7 @@ class _$ReposSerializer implements StructuredSerializer<Repos> {
           result.items.replace(serializers.deserialize(value,
                   specifiedType:
                       const FullType(BuiltList, const [const FullType(Repo)]))
-              as BuiltList<Repo>);
+              as BuiltList);
           break;
       }
     }
@@ -191,11 +198,6 @@ class _$RepoOwnerSerializer implements StructuredSerializer<RepoOwner> {
   }
 }
 
-// **************************************************************************
-// Generator: BuiltValueGenerator
-// Target: abstract class Repos
-// **************************************************************************
-
 class _$Repos extends Repos {
   @override
   final BuiltList<Repo> items;
@@ -204,7 +206,7 @@ class _$Repos extends Repos {
       (new ReposBuilder()..update(updates)).build();
 
   _$Repos._({this.items}) : super._() {
-    if (items == null) throw new ArgumentError.notNull('items');
+    if (items == null) throw new BuiltValueNullFieldError('Repos', 'items');
   }
 
   @override
@@ -263,16 +265,24 @@ class ReposBuilder implements Builder<Repos, ReposBuilder> {
 
   @override
   _$Repos build() {
-    final result = _$v ?? new _$Repos._(items: items?.build());
-    replace(result);
-    return result;
+    _$Repos _$result;
+    try {
+      _$result = _$v ?? new _$Repos._(items: items.build());
+    } catch (_) {
+      String _$failedField;
+      try {
+        _$failedField = 'items';
+        items.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'Repos', _$failedField, e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
   }
 }
-
-// **************************************************************************
-// Generator: BuiltValueGenerator
-// Target: abstract class Repo
-// **************************************************************************
 
 class _$Repo extends Repo {
   @override
@@ -308,15 +318,19 @@ class _$Repo extends Repo {
       this.description,
       this.stargazers_count})
       : super._() {
-    if (id == null) throw new ArgumentError.notNull('id');
-    if (name == null) throw new ArgumentError.notNull('name');
-    if (full_name == null) throw new ArgumentError.notNull('full_name');
-    if (owner == null) throw new ArgumentError.notNull('owner');
-    if (html_url == null) throw new ArgumentError.notNull('html_url');
-    if (language == null) throw new ArgumentError.notNull('language');
-    if (created_at == null) throw new ArgumentError.notNull('created_at');
+    if (id == null) throw new BuiltValueNullFieldError('Repo', 'id');
+    if (name == null) throw new BuiltValueNullFieldError('Repo', 'name');
+    if (full_name == null)
+      throw new BuiltValueNullFieldError('Repo', 'full_name');
+    if (owner == null) throw new BuiltValueNullFieldError('Repo', 'owner');
+    if (html_url == null)
+      throw new BuiltValueNullFieldError('Repo', 'html_url');
+    if (language == null)
+      throw new BuiltValueNullFieldError('Repo', 'language');
+    if (created_at == null)
+      throw new BuiltValueNullFieldError('Repo', 'created_at');
     if (stargazers_count == null)
-      throw new ArgumentError.notNull('stargazers_count');
+      throw new BuiltValueNullFieldError('Repo', 'stargazers_count');
   }
 
   @override
@@ -446,26 +460,34 @@ class RepoBuilder implements Builder<Repo, RepoBuilder> {
 
   @override
   _$Repo build() {
-    final result = _$v ??
-        new _$Repo._(
-            id: id,
-            name: name,
-            full_name: full_name,
-            owner: owner?.build(),
-            html_url: html_url,
-            language: language,
-            created_at: created_at,
-            description: description,
-            stargazers_count: stargazers_count);
-    replace(result);
-    return result;
+    _$Repo _$result;
+    try {
+      _$result = _$v ??
+          new _$Repo._(
+              id: id,
+              name: name,
+              full_name: full_name,
+              owner: owner.build(),
+              html_url: html_url,
+              language: language,
+              created_at: created_at,
+              description: description,
+              stargazers_count: stargazers_count);
+    } catch (_) {
+      String _$failedField;
+      try {
+        _$failedField = 'owner';
+        owner.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'Repo', _$failedField, e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
   }
 }
-
-// **************************************************************************
-// Generator: BuiltValueGenerator
-// Target: abstract class RepoOwner
-// **************************************************************************
 
 class _$RepoOwner extends RepoOwner {
   @override
@@ -475,7 +497,7 @@ class _$RepoOwner extends RepoOwner {
       (new RepoOwnerBuilder()..update(updates)).build();
 
   _$RepoOwner._({this.login}) : super._() {
-    if (login == null) throw new ArgumentError.notNull('login');
+    if (login == null) throw new BuiltValueNullFieldError('RepoOwner', 'login');
   }
 
   @override
@@ -534,8 +556,8 @@ class RepoOwnerBuilder implements Builder<RepoOwner, RepoOwnerBuilder> {
 
   @override
   _$RepoOwner build() {
-    final result = _$v ?? new _$RepoOwner._(login: login);
-    replace(result);
-    return result;
+    final _$result = _$v ?? new _$RepoOwner._(login: login);
+    replace(_$result);
+    return _$result;
   }
 }

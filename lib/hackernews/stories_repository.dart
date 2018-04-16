@@ -29,7 +29,7 @@ class StoriesRepositoryImpl extends StoriesRepository {
     String url = Url.baseUrl(baseUrl, topStoriesUrl);
     return new Observable.fromFuture(client.get(url))
         .where((Response response) => response != null)
-        .map((Response response) => JSON.decode(response.body))
+        .map((Response response) => json.decode(response.body))
         .flatMap((dynamic body) {
           BuiltList<int> topStoryIds = serializers.deserialize(body,
               specifiedType: listOfInts);
@@ -43,10 +43,10 @@ class StoriesRepositoryImpl extends StoriesRepository {
 
   @override
   Observable<Story> getStory(int id) {
-    String url = Url.baseUrl(baseUrl, 'item/${id}.json');
+    String url = Url.baseUrl(baseUrl, 'item/$id.json');
     return new Observable.fromFuture(client.get(url))
         .where((Response response) => response != null)
-        .map((Response response) => JSON.decode(response.body))
+        .map((Response response) => json.decode(response.body))
         .map((dynamic body) => serializers.deserializeWith(Story.serializer, body));
   }
 }
