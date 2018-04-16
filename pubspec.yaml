@@ -4,24 +4,23 @@ description: A Hacker News client written in Flutter
 dependencies:
   flutter:
     sdk: flutter
-  http: ^0.11.3+16
-  share: ^0.4.0
+  share: ^0.2.1
 #  shared_preferences: ^0.2.0+1
-  url_launcher: ^3.0.0
-  meta: '>=1.0.4'
-  built_value: '>=4.2.0'
-  built_collection: '>=1.0.0'
-  rxdart: '>=0.11.0'
-  intl: '>=0.15.2'
+  url_launcher: ^0.4.2+5
+  meta: ^1.0.4
+  built_value: ^4.2.0
+  built_collection: ^1.0.0
+  rxdart: 0.11.0
+  intl: 0.15.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  build: '>=0.10.0'
+  build: ^0.10.0
   build_runner: '>=0.4.0'
-  built_value_generator: '>=4.2.0'
-  mockito: '>=2.2.0'
-  source_gen: '>=0.7.0'
+  built_value_generator: ^4.2.0
+  mockito: 2.2.0
+  source_gen: ^0.7.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
