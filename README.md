@@ -5,8 +5,7 @@ A news client written in Flutter that displays top stories from Hacker News, Red
 
 In order to install the app, generate the models and run the app:
 ```
-./flutterw packages pub run build_runner build
-./flutterw run --no-preview-dart-2
+./flutterw run
 ```
 
 ## Screenshots
