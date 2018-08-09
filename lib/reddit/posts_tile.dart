@@ -44,7 +44,7 @@ class PostListTile extends StatelessWidget {
       onTap: tapCallback);
 
   onTapTrailing() {
-    share('${post.username()} ${post.url}');
+    Share.share('${post.username()} ${post.url}');
   }
 
 //  _onLongPressTrailing(BuildContext context) {

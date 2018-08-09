@@ -3,13 +3,15 @@
 part of post;
 
 // **************************************************************************
-// Generator: BuiltValueGenerator
+// BuiltValueGenerator
 // **************************************************************************
 
 // ignore_for_file: always_put_control_body_on_new_line
 // ignore_for_file: annotate_overrides
 // ignore_for_file: avoid_annotating_with_dynamic
+// ignore_for_file: avoid_catches_without_on_clauses
 // ignore_for_file: avoid_returning_this
+// ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: sort_constructors_first
@@ -27,7 +29,7 @@ class _$PostsSerializer implements StructuredSerializer<Posts> {
 
   @override
   Iterable serialize(Serializers serializers, Posts object,
-      {FullType specifiedType: FullType.unspecified}) {
+      {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'data',
       serializers.serialize(object.data,
@@ -39,7 +41,7 @@ class _$PostsSerializer implements StructuredSerializer<Posts> {
 
   @override
   Posts deserialize(Serializers serializers, Iterable serialized,
-      {FullType specifiedType: FullType.unspecified}) {
+      {FullType specifiedType = FullType.unspecified}) {
     final result = new PostsBuilder();
 
     final iterator = serialized.iterator;
@@ -67,7 +69,7 @@ class _$PostsDataSerializer implements StructuredSerializer<PostsData> {
 
   @override
   Iterable serialize(Serializers serializers, PostsData object,
-      {FullType specifiedType: FullType.unspecified}) {
+      {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'children',
       serializers.serialize(object.children,
@@ -80,7 +82,7 @@ class _$PostsDataSerializer implements StructuredSerializer<PostsData> {
 
   @override
   PostsData deserialize(Serializers serializers, Iterable serialized,
-      {FullType specifiedType: FullType.unspecified}) {
+      {FullType specifiedType = FullType.unspecified}) {
     final result = new PostsDataBuilder();
 
     final iterator = serialized.iterator;
@@ -109,7 +111,7 @@ class _$PostDataSerializer implements StructuredSerializer<PostData> {
 
   @override
   Iterable serialize(Serializers serializers, PostData object,
-      {FullType specifiedType: FullType.unspecified}) {
+      {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'data',
       serializers.serialize(object.data, specifiedType: const FullType(Post)),
@@ -120,7 +122,7 @@ class _$PostDataSerializer implements StructuredSerializer<PostData> {
 
   @override
   PostData deserialize(Serializers serializers, Iterable serialized,
-      {FullType specifiedType: FullType.unspecified}) {
+      {FullType specifiedType = FullType.unspecified}) {
     final result = new PostDataBuilder();
 
     final iterator = serialized.iterator;
@@ -148,7 +150,7 @@ class _$PostSerializer implements StructuredSerializer<Post> {
 
   @override
   Iterable serialize(Serializers serializers, Post object,
-      {FullType specifiedType: FullType.unspecified}) {
+      {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(String)),
@@ -181,7 +183,7 @@ class _$PostSerializer implements StructuredSerializer<Post> {
 
   @override
   Post deserialize(Serializers serializers, Iterable serialized,
-      {FullType specifiedType: FullType.unspecified}) {
+      {FullType specifiedType = FullType.unspecified}) {
     final result = new PostBuilder();
 
     final iterator = serialized.iterator;

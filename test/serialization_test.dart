@@ -23,7 +23,7 @@ void main() {
         serializers.deserialize(
             json.decode(hn_top_stories_response),
             specifiedType: listOfInts),
-        equals(new BuiltList<int>()..toBuilder().addAll([14372679, 14370397, 14372267])));
+        equals(new BuiltList<int>([14372679, 14370397, 14372267])));
   });
 
 //  test("String.trim() removes surrounding whitespace", () {

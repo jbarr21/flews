@@ -9,7 +9,7 @@ FLUTTER_DIR="$(pwd -P)/.flutter"
 WRAPPER_PROPERTIES="$FLUTTERW_DIR/flutter-wrapper.properties"
 FLUTTER_REPO_URL="https://github.com/flutter/flutter.git"
 
-DEFAULT_CHANNEL="alpha"
+DEFAULT_CHANNEL="master"
 
 # Check if wrapper config file exists otherwise create with default values
 if [ ! -d $FLUTTERW_DIR ]; then

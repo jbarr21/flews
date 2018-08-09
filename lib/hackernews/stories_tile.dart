@@ -43,7 +43,7 @@ class StoryListTile extends StatelessWidget {
       onTap: tapCallback);
 
   onTapTrailing() {
-    share('${story.title} ${story.url}');
+    Share.share('${story.title} ${story.url}');
   }
 
 //  _onLongPressTrailing(BuildContext context) {

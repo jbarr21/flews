@@ -43,7 +43,7 @@ class RepoListTile extends StatelessWidget {
       onTap: tapCallback);
 
   onTapTrailing() {
-    share('${repo.full_name} ${repo.html_url}');
+    Share.share('${repo.full_name} ${repo.html_url}');
   }
 
 //  _onLongPressTrailing(BuildContext context) {

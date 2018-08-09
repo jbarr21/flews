@@ -1,34 +1,28 @@
 PODS:
   - Flutter (1.0.0)
-  - share (0.0.1):
-    - Flutter
-  - shared_preferences (0.0.1):
+  - share (0.5.2):
     - Flutter
   - url_launcher (0.0.1):
     - Flutter
 
 DEPENDENCIES:
-  - Flutter (from `/Users/jbarr/sample-projects/flutter/bin/cache/artifacts/engine/ios`)
-  - share (from `/Users/jbarr/.pub-cache/hosted/pub.dartlang.org/share-0.2.1/ios`)
-  - shared_preferences (from `/Users/jbarr/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.2.0+1/ios`)
-  - url_launcher (from `/Users/jbarr/.pub-cache/hosted/pub.dartlang.org/url_launcher-0.4.2+1/ios`)
+  - Flutter (from `/Users/olegg/source/flews/.flutter/bin/cache/artifacts/engine/ios`)
+  - share (from `/Users/olegg/.pub-cache/hosted/pub.dartlang.org/share-0.5.2/ios`)
+  - url_launcher (from `/Users/olegg/.pub-cache/hosted/pub.dartlang.org/url_launcher-3.0.3/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
-    :path: /Users/jbarr/sample-projects/flutter/bin/cache/artifacts/engine/ios
+    :path: "/Users/olegg/source/flews/.flutter/bin/cache/artifacts/engine/ios"
   share:
-    :path: /Users/jbarr/.pub-cache/hosted/pub.dartlang.org/share-0.2.1/ios
-  shared_preferences:
-    :path: /Users/jbarr/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.2.0+1/ios
+    :path: "/Users/olegg/.pub-cache/hosted/pub.dartlang.org/share-0.5.2/ios"
   url_launcher:
-    :path: /Users/jbarr/.pub-cache/hosted/pub.dartlang.org/url_launcher-0.4.2+1/ios
+    :path: "/Users/olegg/.pub-cache/hosted/pub.dartlang.org/url_launcher-3.0.3/ios"
 
 SPEC CHECKSUMS:
-  Flutter: d674e78c937094a75ac71dd77e921e840bea3dbf
-  share: ee3d34d3969ad17fc3043eab552e4f082aacfed1
-  shared_preferences: 1feebfa37bb57264736e16865e7ffae7fc99b523
-  url_launcher: 0067ddb8f10d36786672aa0722a21717dba3a298
+  Flutter: 9d0fac939486c9aba2809b7982dfdbb47a7b0296
+  share: 222b5dcc8031238af9d7de91149df65bad1aef75
+  url_launcher: 92b89c1029a0373879933c21642958c874539095
 
 PODFILE CHECKSUM: cc70c01bca487bebd110b87397f017f3b76a89f1
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.5.3
