@@ -7,8 +7,8 @@ import 'package:built_value/serializer.dart';
 part 'story.g.dart';
 
 abstract class Story implements Built<Story, StoryBuilder> {
-  static RegExp domainPrefix = new RegExp(r'(.*://)?(www.)?');
-  static RegExp domainSuffix = new RegExp(r'([/?].*)');
+  static RegExp domainPrefix = RegExp(r'(.*://)?(www.)?');
+  static RegExp domainSuffix = RegExp(r'([/?].*)');
 
   int get id;
   String get by;

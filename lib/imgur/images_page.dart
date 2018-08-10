@@ -11,7 +11,7 @@ class ImagesPage extends StatefulWidget {
   static const String routeName = "/images";
 
   @override
-  _ImagesPageState createState() => new _ImagesPageState();
+  _ImagesPageState createState() => _ImagesPageState();
 }
 
 class _ImagesPageState extends State<ImagesPage> {
@@ -30,14 +30,14 @@ class _ImagesPageState extends State<ImagesPage> {
   @override
   Widget build(BuildContext context) {
     final imageGridTiles = _images.map((ImageItem photo) {
-      return new ImageGridTile(
+      return ImageGridTile(
           photo,
           //() => Navigator.of(context).pushNamed(ImagesDetailPage.routeName)
           () => UrlLauncher.launchUrl(photo.link));
     }).toList();
 
     final Orientation orientation = MediaQuery.of(context).orientation;
-    GridView gridView = new GridView.count(
+    GridView gridView = GridView.count(
       children: imageGridTiles,
       crossAxisCount: (orientation == Orientation.portrait) ? 2 : 3,
       mainAxisSpacing: 4.0,
@@ -46,15 +46,15 @@ class _ImagesPageState extends State<ImagesPage> {
       childAspectRatio: 1.0,
     );
 
-    return new RefreshIndicator(
-        child: new AnimatedCrossFade(
-            firstChild: new Center(child: new CircularProgressIndicator()),
+    return RefreshIndicator(
+        child: AnimatedCrossFade(
+            firstChild: Center(child: CircularProgressIndicator()),
             secondChild:
-                new Column(children: <Widget>[new Expanded(child: gridView)]),
+                Column(children: <Widget>[Expanded(child: gridView)]),
             crossFadeState: _images.isEmpty
                 ? CrossFadeState.showFirst
                 : CrossFadeState.showSecond,
-            duration: new Duration(milliseconds: 200)),
+            duration: Duration(milliseconds: 200)),
         onRefresh: _onRefresh);
   }
 

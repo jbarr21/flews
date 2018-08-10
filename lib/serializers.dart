@@ -17,5 +17,5 @@ part 'serializers.g.dart';
   Repos         // GH
 ])
 final Serializers serializers = (_$serializers.toBuilder()
-  ..addPlugin(new StandardJsonPlugin())
+  ..addPlugin(StandardJsonPlugin())
 ).build();

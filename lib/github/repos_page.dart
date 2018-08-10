@@ -11,7 +11,7 @@ class ReposPage extends StatefulWidget {
   static const String routeName = "/repos";
 
   @override
-  _ReposPageState createState() => new _ReposPageState();
+  _ReposPageState createState() => _ReposPageState();
 }
 
 class _ReposPageState extends State<ReposPage> {
@@ -30,17 +30,17 @@ class _ReposPageState extends State<ReposPage> {
   @override
   Widget build(BuildContext context) {
     final repoListTiles = _repos.map((repo) {
-      return new RepoListTile(repo, () => UrlLauncher.launchUrl(repo.html_url));
+      return RepoListTile(repo, () => UrlLauncher.launchUrl(repo.html_url));
     }).toList();
 
-    return new RefreshIndicator(
-        child: new AnimatedCrossFade(
-            firstChild: new Center(child: new CircularProgressIndicator()),
-            secondChild: new ListView(children: repoListTiles),
+    return RefreshIndicator(
+        child: AnimatedCrossFade(
+            firstChild: Center(child: CircularProgressIndicator()),
+            secondChild: ListView(children: repoListTiles),
             crossFadeState: _repos.isEmpty
                 ? CrossFadeState.showFirst
                 : CrossFadeState.showSecond,
-            duration: new Duration(milliseconds: 200)),
+            duration: Duration(milliseconds: 200)),
         onRefresh: _onRefresh);
   }
 

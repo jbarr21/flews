@@ -11,9 +11,9 @@ class ImageGridTile extends StatelessWidget {
   Widget build(BuildContext context) {
     String imageUrl = 'https://i.imgur.com/${photo.cover ?? photo.id}b.jpg';
 
-    return new GridTile(
-        child: new InkWell(
-            child: new Image.network(imageUrl, fit: BoxFit.cover),
+    return GridTile(
+        child: InkWell(
+            child: Image.network(imageUrl, fit: BoxFit.cover),
             onTap: tapCallback));
   }
 }

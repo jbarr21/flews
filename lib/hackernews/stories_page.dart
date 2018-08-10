@@ -14,7 +14,7 @@ class StoriesPage extends StatefulWidget {
 
   @override
   _StoriesPageState createState() =>
-      new _StoriesPageState(new StoriesRepositoryImpl(new Client()));
+      _StoriesPageState(StoriesRepositoryImpl(Client()));
 }
 
 class _StoriesPageState extends State<StoriesPage> {
@@ -32,22 +32,22 @@ class _StoriesPageState extends State<StoriesPage> {
   @override
   Widget build(BuildContext context) {
     final storyListTiles = _stories.map((story) {
-      return new StoryListTile(story, () => UrlLauncher.launchUrl(story.url));
+      return StoryListTile(story, () => UrlLauncher.launchUrl(story.url));
     }).toList();
 
-    return new RefreshIndicator(
-        child: new AnimatedCrossFade(
-            firstChild: new Center(child: new CircularProgressIndicator()),
-            secondChild: new ListView(children: storyListTiles),
+    return RefreshIndicator(
+        child: AnimatedCrossFade(
+            firstChild: Center(child: CircularProgressIndicator()),
+            secondChild: ListView(children: storyListTiles),
             crossFadeState: _stories.isEmpty
                 ? CrossFadeState.showFirst
                 : CrossFadeState.showSecond,
-            duration: new Duration(milliseconds: 200)),
+            duration: Duration(milliseconds: 200)),
         onRefresh: _onRefresh);
   }
 
   Future _onRefresh() {
-    return new Future(loadStories);
+    return Future(loadStories);
   }
 
   void loadStories() {

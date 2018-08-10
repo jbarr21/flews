@@ -11,28 +11,28 @@ class ImagesDetailPage extends StatefulWidget {
   final ImageItem image;
 
   @override
-  _ImagesDetailPageState createState() => new _ImagesDetailPageState();
+  _ImagesDetailPageState createState() => _ImagesDetailPageState();
 }
 
 class _ImagesDetailPageState extends State<ImagesDetailPage> {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text(widget.image.id),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.image.id),
       ),
-      body: new Row(
+      body: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            new Expanded(
-                child: new Image.network('http://i.imgur.com/7unwhF0.jpg',
+            Expanded(
+                child: Image.network('http://i.imgur.com/7unwhF0.jpg',
                     fit: BoxFit.fitWidth))
           ]),
-      floatingActionButton: new FloatingActionButton(
+      floatingActionButton: FloatingActionButton(
         onPressed: _onFloatingActionButtonPressed,
         tooltip: 'Add',
-        child: new Icon(Icons.add),
+        child: Icon(Icons.add),
       ),
     );
   }

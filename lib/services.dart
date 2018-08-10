@@ -14,22 +14,22 @@ class Page {
 
 // ignore: non_constant_identifier_names
 final List<Page> PAGES = <Page>[
-  new Page(
+  Page(
       service: Service.HACKER_NEWS,
       text: Strings.hackerNews,
       icon: 'ycombinator.png',
       color: Colors.deepOrange),
-  new Page(
+  Page(
       service: Service.REDDIT,
       text: Strings.reddit,
       icon: 'reddit.png',
       color: Colors.blue),
-  new Page(
+  Page(
       service: Service.IMGUR,
       text: Strings.imgur,
       icon: 'imgur.png',
       color: Colors.green),
-  new Page(
+  Page(
       service: Service.GITHUB,
       text: Strings.github,
       icon: 'github.png',

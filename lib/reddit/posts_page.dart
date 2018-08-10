@@ -11,7 +11,7 @@ class PostsPage extends StatefulWidget {
   static const String routeName = "/posts";
 
   @override
-  _PostsPageState createState() => new _PostsPageState();
+  _PostsPageState createState() => _PostsPageState();
 }
 
 class _PostsPageState extends State<PostsPage> {
@@ -30,17 +30,17 @@ class _PostsPageState extends State<PostsPage> {
   @override
   Widget build(BuildContext context) {
     final postListTiles = _posts.map((post) {
-      return new PostListTile(post, () => UrlLauncher.launchUrl(post.url));
+      return PostListTile(post, () => UrlLauncher.launchUrl(post.url));
     }).toList();
 
-    return new RefreshIndicator(
-        child: new AnimatedCrossFade(
-            firstChild: new Center(child: new CircularProgressIndicator()),
-            secondChild: new ListView(children: postListTiles),
+    return RefreshIndicator(
+        child: AnimatedCrossFade(
+            firstChild: Center(child: CircularProgressIndicator()),
+            secondChild: ListView(children: postListTiles),
             crossFadeState: _posts.isEmpty
                 ? CrossFadeState.showFirst
                 : CrossFadeState.showSecond,
-            duration: new Duration(milliseconds: 200)),
+            duration: Duration(milliseconds: 200)),
         onRefresh: _onRefresh);
   }
 

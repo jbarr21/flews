@@ -27,13 +27,13 @@ class StoriesRepositoryImpl extends StoriesRepository {
   @override
   Observable<List<Story>> getTopStories() {
     String url = Url.baseUrl(baseUrl, topStoriesUrl);
-    return new Observable.fromFuture(client.get(url))
+    return Observable.fromFuture(client.get(url))
         .where((Response response) => response != null)
         .map((Response response) => json.decode(response.body))
         .flatMap((dynamic body) {
           BuiltList<int> topStoryIds = serializers.deserialize(body,
               specifiedType: listOfInts);
-          return new Observable.fromIterable(topStoryIds);
+          return Observable.fromIterable(topStoryIds);
         })
         .take(50)
         .flatMap((int storyId) => getStory(storyId))
@@ -44,7 +44,7 @@ class StoriesRepositoryImpl extends StoriesRepository {
   @override
   Observable<Story> getStory(int id) {
     String url = Url.baseUrl(baseUrl, 'item/$id.json');
-    return new Observable.fromFuture(client.get(url))
+    return Observable.fromFuture(client.get(url))
         .where((Response response) => response != null)
         .map((Response response) => json.decode(response.body))
         .map((dynamic body) => serializers.deserializeWith(Story.serializer, body));
