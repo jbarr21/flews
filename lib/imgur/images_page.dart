@@ -49,8 +49,7 @@ class _ImagesPageState extends State<ImagesPage> {
     return RefreshIndicator(
         child: AnimatedCrossFade(
             firstChild: Center(child: CircularProgressIndicator()),
-            secondChild:
-                Column(children: <Widget>[Expanded(child: gridView)]),
+            secondChild: Column(children: <Widget>[Expanded(child: gridView)]),
             crossFadeState: _images.isEmpty
                 ? CrossFadeState.showFirst
                 : CrossFadeState.showSecond,

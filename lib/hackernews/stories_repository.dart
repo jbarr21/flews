@@ -8,7 +8,8 @@ import 'package:flews/util.dart';
 import 'package:http/http.dart';
 import 'package:rxdart/rxdart.dart';
 
-const FullType listOfInts = const FullType(BuiltList, const [const FullType(int)]);
+const FullType listOfInts =
+    const FullType(BuiltList, const [const FullType(int)]);
 
 abstract class StoriesRepository {
   Observable<List<Story>> getTopStories();
@@ -16,7 +17,6 @@ abstract class StoriesRepository {
 }
 
 class StoriesRepositoryImpl extends StoriesRepository {
-
   static const String baseUrl = 'https://hacker-news.firebaseio.com/v0/';
   static const String topStoriesUrl = 'topstories.json';
   static const String storyDetailsUrl = 'item';
@@ -31,8 +31,8 @@ class StoriesRepositoryImpl extends StoriesRepository {
         .where((Response response) => response != null)
         .map((Response response) => json.decode(response.body))
         .flatMap((dynamic body) {
-          BuiltList<int> topStoryIds = serializers.deserialize(body,
-              specifiedType: listOfInts);
+          BuiltList<int> topStoryIds =
+              serializers.deserialize(body, specifiedType: listOfInts);
           return Observable.fromIterable(topStoryIds);
         })
         .take(50)
@@ -47,6 +47,7 @@ class StoriesRepositoryImpl extends StoriesRepository {
     return Observable.fromFuture(client.get(url))
         .where((Response response) => response != null)
         .map((Response response) => json.decode(response.body))
-        .map((dynamic body) => serializers.deserializeWith(Story.serializer, body));
+        .map((dynamic body) =>
+            serializers.deserializeWith(Story.serializer, body));
   }
 }

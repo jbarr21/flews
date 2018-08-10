@@ -51,11 +51,10 @@ class _StoriesPageState extends State<StoriesPage> {
   }
 
   void loadStories() {
-    _repository.getTopStories()
-        .listen((List<Story> stories) {
-          setState(() {
-            _stories = stories;
-          });
-        });
+    _repository.getTopStories().listen((List<Story> stories) {
+      setState(() {
+        _stories = stories;
+      });
+    });
   }
 }

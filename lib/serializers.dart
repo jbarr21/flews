@@ -11,11 +11,10 @@ import 'package:flews/reddit/post.dart';
 part 'serializers.g.dart';
 
 @SerializersFor(const [
-  Story,        // HN
-  Posts,        // Reddit
+  Story, // HN
+  Posts, // Reddit
   GalleryItems, // Imgur
-  Repos         // GH
+  Repos // GH
 ])
-final Serializers serializers = (_$serializers.toBuilder()
-  ..addPlugin(StandardJsonPlugin())
-).build();
+final Serializers serializers =
+    (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();

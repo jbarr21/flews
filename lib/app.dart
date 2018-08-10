@@ -53,8 +53,7 @@ class FlewsAppState extends State<FlewsApp>
                 indicatorColor: themeData.textTheme.title.color,
                 tabs: PAGES.map((Page page) {
                   return Tab(
-                      icon: ImageIcon(
-                          AssetImage('images/icons/${page.icon}')));
+                      icon: ImageIcon(AssetImage('images/icons/${page.icon}')));
                 }).toList(),
               ),
             ),
