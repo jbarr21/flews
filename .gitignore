@@ -93,3 +93,6 @@ unlinked_spec.ds
 # my iOS/XCode related
 **/ios/Podfile.lock
 **/ios/**/xcshareddata
+
+# my misc
+*.g.dart
