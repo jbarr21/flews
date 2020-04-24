@@ -13,7 +13,7 @@ class FlewsApp extends StatefulWidget {
 class FlewsAppState extends State<FlewsApp>
     with SingleTickerProviderStateMixin {
   TabController _controller;
-  Page _currentTab;
+  ServicePage _currentTab;
 
   @override
   void initState() {
@@ -51,7 +51,7 @@ class FlewsAppState extends State<FlewsApp>
                 controller: _controller,
                 isScrollable: false,
                 indicatorColor: themeData.textTheme.title.color,
-                tabs: PAGES.map((Page page) {
+                tabs: PAGES.map((ServicePage page) {
                   return Tab(
                       icon: ImageIcon(AssetImage('images/icons/${page.icon}')));
                 }).toList(),
@@ -59,7 +59,7 @@ class FlewsAppState extends State<FlewsApp>
             ),
             body: TabBarView(
                 controller: _controller,
-                children: PAGES.map((Page page) {
+                children: PAGES.map((ServicePage page) {
                   switch (page.service) {
                     case Service.HACKER_NEWS:
                       return StoriesPage();
